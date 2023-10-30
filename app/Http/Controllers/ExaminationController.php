@@ -20,18 +20,18 @@ class ExaminationController extends Controller
     {
         request()->validate(Examination::$rules, Examination::$messages);
         Examination::create($request->all());
-        return redirect()->route('examinations.index')->with('success', 'Examination created successfully.');
+        return redirect()->route('examinations.index')->with('mansaje', 'OkCreate');
     }
     public function update(Request $request, $id)
     {
         request()->validate(Examination::$rules, Examination::$messages);
         $Examination = request()->except('_token', '_method');
         Examination::where('id', $id)->update($Examination);
-        return redirect()->route('examinations.index')->with('success', 'Examination updated successfully');
+        return redirect()->route('examinations.index')->with('mansaje', 'OkUpdate');
     }
     public function destroy($id)
     {
         Examination::find($id)->delete();
-        return redirect()->route('examinations.index')->with('success', 'Examination deleted successfully');
+        return redirect()->route('examinations.index')->with('mansaje', 'OkDelete');
     }
 }

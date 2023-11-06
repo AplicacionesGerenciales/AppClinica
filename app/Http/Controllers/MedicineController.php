@@ -20,18 +20,18 @@ class MedicineController extends Controller
     {
         request()->validate(Medicine::$rules, Medicine::$messages);
         Medicine::create($request->all());
-        return redirect()->route('medicines.index')->with('success', 'Medicine created successfully.');
+        return redirect()->route('medicines.index')->with('mensaje', 'OkCreate.');
     }
     public function update(Request $request, $id)
     {
         request()->validate(Medicine::$rules, Medicine::$messages);
         $Medicine = request()->except('_token', '_method');
         Medicine::where('id', $id)->update($Medicine);
-        return redirect()->route('medicines.index')->with('success', 'Medicine updated successfully');
+        return redirect()->route('medicines.index')->with('mensaje', 'OkUpdate');
     }
     public function destroy($id)
     {
         Medicine::find($id)->delete();
-        return redirect()->route('medicines.index')->with('success', 'Medicine deleted successfully');
+        return redirect()->route('medicines.index')->with('mensaje', 'OkDelete');
     }
 }

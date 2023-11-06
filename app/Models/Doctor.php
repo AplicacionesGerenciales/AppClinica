@@ -30,58 +30,47 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Doctor extends Model
 {
-    static $rules = [
-		'name' => 'required',
-		'lastname' => 'required',
-		'phone' => 'required',
-		'identity_card' => 'required',
-		'gender' => 'required',
-		'inss' => 'required',
-		'specialty_id' => 'required',
-		'user_id' => 'required',
-    ];
-    static $messages = [
-        'name.required' => 'Obligatorio',
-        'name.min' => 'Minimo 3 caracteres',
-        'lastname.required' => 'Obligatorio',
-        'lastname.min' => 'Minimo 3 caracteres',
-        'phone.required' => 'Obligatorio',
-        'phone.min' => 'Minimo 3 caracteres',
-        'identity_card.required' => 'Obligatorio',
-        'identity_card.min' => 'Minimo 3 caracteres',
-        'gender.required' => 'Obligatorio',
-        'gender.min' => 'Minimo 3 caracteres',
-        'inss.required' => 'Obligatorio',
-        'inss.min' => 'Minimo 3 caracteres',
-        'specialty_id.required' => 'Obligatorio',
-        'user_id.required' => 'Obligatorio',
+    
+    public static function rules($id = null)
+    {
+        $rules = [
+            'name' => 'required',
+            'lastname' => 'required',
+            'phone' => 'required',
+            'identity_card' => 'required|unique:doctors,identity_card,' . $id,
+            'gender' => 'required',
+            'inss' => 'required|unique:doctors,inss,' . $id,
+            'specialty_id' => 'required',
+            'user_id' => 'required|exists:users,id|unique:doctors,user_id,' .$id,
         ];
+        return $rules;
+    }
+
+    static $messages = [
+        'name.required' => 'Nombre es requerido',
+        'name.min' => 'Mínimo 3 caracteres',
+        'lastname.required' => 'Apellido es requerido',
+        'lastname.min' => 'Mínimo 3 caracteres',
+        'phone.required' => 'Telèfono es requerido',
+        'phone.min' => 'Mínimo 3 caracteres',
+        'identity_card.required' => 'Cèdula es requerido',
+        'identity_card.min' => 'Mínimo 3 caracteres',
+        'gender.required' => 'Obligatorio',
+        'gender.min' => 'Mínimo 3 caracteres',
+        'inss.required' => 'INSS es requerido',
+        'inss.min' => 'Mínimo 3 caracteres',
+        'identity_card.unique' => 'El número de cédula ya está en uso.', 
+        'inss.unique' => 'El número de INSS ya está en uso.', 
+        'specialty_id.required' => 'Especialidad es requerido',
+        'user_id.required' => 'id usuario es requerido',
+        'user_id.unique' => 'Ya existe un doctor con ese ID de usuario.', 
+        'user_id.exists' => 'El ID del usuario no existe en la base de datos.', 
+
+
+    ];
+    
     protected $perPage = 20;
 
     protected $fillable = ['name','lastname','phone','identity_card','gender','inss','specialty_id','user_id'];
 
-    public function appointments()
-    {
-        return $this->hasMany('App\Models\Appointment', 'doctor_id', 'id');
-    }
-    public function medicalConsultations()
-    {
-        return $this->hasMany('App\Models\MedicalConsultation', 'doctor_id', 'id');
-    }
-    public function notifications()
-    {
-        return $this->hasMany('App\Models\Notification', 'doctor_id', 'id');
-    }
-    public function schedules()
-    {
-        return $this->hasMany('App\Models\Schedule', 'doctor_id', 'id');
-    }
-    public function specialty()
-    {
-        return $this->hasOne('App\Models\Specialty', 'id', 'specialty_id');
-    }
-    public function user()
-    {
-        return $this->hasOne('App\Models\User', 'id', 'user_id');
-    }
 }

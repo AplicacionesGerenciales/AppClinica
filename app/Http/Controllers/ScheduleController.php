@@ -20,18 +20,19 @@ class ScheduleController extends Controller
     {
         request()->validate(Schedule::$rules, Schedule::$messages);
         Schedule::create($request->all());
-        return redirect()->route('schedules.index')->with('success', 'Schedule created successfully.');
+        return redirect()->route('schedules.index')->with('mensaje', 'OkCreate');
     }
     public function update(Request $request, $id)
     {
         request()->validate(Schedule::$rules, Schedule::$messages);
         $Schedule = request()->except('_token', '_method');
         Schedule::where('id', $id)->update($Schedule);
-        return redirect()->route('schedules.index')->with('success', 'Schedule updated successfully');
+        return redirect()->route('schedules.index')->with('mensaje', 'OkUpdate');
     }
+
     public function destroy($id)
     {
         Schedule::find($id)->delete();
-        return redirect()->route('schedules.index')->with('success', 'Schedule deleted successfully');
+        return redirect()->route('schedules.index')->with('success', 'OkDelete');
     }
 }

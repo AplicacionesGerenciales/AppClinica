@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Patient;
+use App\Models\Doctor;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * Class PatientController
@@ -33,5 +36,31 @@ class PatientController extends Controller
     {
         Patient::find($id)->delete();
         return redirect()->route('patients.index')->with('success', 'Patient deleted successfully');
+    }
+    public function profile()
+    {
+        $id = Auth::id();
+        $idusers = user::where('id', $id)->pluck('id')->first();
+        $idpatient = Patient::where('user_id', $idusers)->pluck('id')->first();
+
+        if($idpatient != null){
+            $patients = Patient::find($idpatient);
+            return view('patient.create', compact('patients'));
+        }
+        else{
+            $iddoctor = Doctor::where('user_id', $idusers)->pluck('id')->first();
+            if($iddoctor != null){
+                $doctors = Doctor::find($iddoctor);
+                return view('doctor.create', compact('doctors'));
+            }
+        }
+    }
+    public function updatepassword(Request $password)
+    {
+        $id = Auth::id();
+        $users = User::find($id);
+        $users->password = bcrypt($password);
+        $users->save();
+        return back()->with('mensaje', 'OkPasswordUpdate');
     }
 }

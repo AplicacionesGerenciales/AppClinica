@@ -1,8 +1,5 @@
-@extends('layouts.app')
+@extends('layouts.panel')
 
-@section('template_title')
-    {{ __('Create') }} Doctor
-@endsection
 
 @section('content')
     <section class="content container-fluid">
@@ -16,7 +13,7 @@
                         <span class="card-title">{{ __('Create') }} Doctor</span>
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="{{ route('doctors.store') }}"  role="form" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('#') }}"  role="form" enctype="multipart/form-data">
                             @csrf
 
                             @include('doctor.form')

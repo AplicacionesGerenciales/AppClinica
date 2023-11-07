@@ -22,18 +22,18 @@ class DiseaseController extends Controller
     {
         request()->validate(Disease::$rules, Disease::$messages);
         Disease::create($request->all());
-        return redirect()->route('diseases.index')->with('success', 'Disease created successfully.');
+        return redirect()->route('diseases.index')->with('mansaje', 'OkCreate.');
     }
     public function update(Request $request, $id)
     {
         request()->validate(Disease::$rules, Disease::$messages);
         $Disease = request()->except('_token', '_method');
         Disease::where('id', $id)->update($Disease);
-        return redirect()->route('diseases.index')->with('success', 'Disease updated successfully');
+        return redirect()->route('diseases.index')->with('mansaje', 'OkUpdate');
     }
     public function destroy($id)
     {
         Disease::find($id)->delete();
-        return redirect()->route('diseases.index')->with('success', 'Disease deleted successfully');
+        return redirect()->route('diseases.index')->with('mansaje', 'OkDelete');
     }
 }

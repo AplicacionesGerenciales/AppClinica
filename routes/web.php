@@ -3,6 +3,12 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
+//agregamos los siguientes controladores
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\RolController;
+use App\Http\Controllers\UsuarioController;
+use App\Http\Controllers\BlogController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -40,4 +46,11 @@ Route::resource('schedules', \App\Http\Controllers\ScheduleController::class);
 Route::resource('specialties', \App\Http\Controllers\SpecialtyController::class);
 Route::resource('status-appointments', \App\Http\Controllers\StatusAppointmentController::class);
 Route::resource('type-examinations', \App\Http\Controllers\TypeExaminationController::class);
+
+Route::resource('roles', RolController::class);
+Route::resource('usuarios', UsuarioController::class);
+Route::resource('blogs', BlogController::class);
+
+
+
 });

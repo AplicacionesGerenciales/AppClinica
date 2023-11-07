@@ -23,6 +23,7 @@ class SeederTablaPermisos extends Seeder
             'editar-rol',
             'borrar-rol',
             
+
         ];
 
         foreach($permisos as $permiso) {

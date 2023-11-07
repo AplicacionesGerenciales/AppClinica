@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Disease;
+use App\Models\DiseaseGroup;
 use Illuminate\Http\Request;
 
 /**
@@ -14,7 +15,8 @@ class DiseaseController extends Controller
     public function index()
     {
         $diseases = Disease::paginate();
-        return view('disease.index', compact('diseases'))->with('i', (request()->input('page', 1) - 1) * $diseases->perPage());
+        $diseases_group = DiseaseGroup::all();
+        return view('disease.index', compact('diseases','diseases_group'))->with('i', (request()->input('page', 1) - 1) * $diseases->perPage());
     }
     public function store(Request $request)
     {

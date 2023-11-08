@@ -6,11 +6,13 @@
         <div class="col">
             <h3 class="color-text mt-3 ml-3">Usuarios</h3>
         </div>
+        @can('crear-usuario')
         <div class="col text-right">            
             <a class="text-white mr-3 mt-3 btn btn-primary"   onclick="openCreateModal()" data-modal-origin="create">Nuevo
                 <i class="mr-2 fa-sharp fa-solid fa-plus"></i>
             </a>
         </div>
+        @endcan
     </div>
     <div class="card-body">
     <div class="table-responsive">
@@ -39,14 +41,15 @@
                     <td>
                                                            
                          <!-- Botón para abrir el modal de edición -->
-                                                                                                                
+                             @can('editar-usuario')                                                                                   
                             <a class = "btn btn-sm btn-primary" data-toggle="modal" onclick="openEditModal({{ $usuario->id }})" style="background-color:#01499B; color:white;">Editar
                                 <svg xmlns="http://www.w3.org/2000/svg" width="15" height="20" viewBox="0 0 20 27" fill="none">
                                     <path d="M19.5313 4.93682L15.0624 0.468764C14.9139 0.32015 14.7375 0.202261 14.5433 0.121829C14.3492 0.0413978 14.1411 0 13.931 0C13.7208 0 13.5128 0.0413978 13.3186 0.121829C13.1245 0.202261 12.9481 0.32015 12.7995 0.468764L0.46899 12.7999C0.319775 12.948 0.201474 13.1242 0.120963 13.3183C0.0404513 13.5125 -0.000663414 13.7207 8.09464e-06 13.9309V18.4C8.09464e-06 18.8243 0.168573 19.2313 0.468619 19.5314C0.768666 19.8314 1.17562 20 1.59995 20H18.3993C18.6115 20 18.8149 19.9157 18.965 19.7657C19.115 19.6157 19.1993 19.4122 19.1993 19.2C19.1993 18.9878 19.115 18.7843 18.965 18.6343C18.8149 18.4843 18.6115 18.4 18.3993 18.4H8.33169L19.5313 7.19985C19.6799 7.05126 19.7978 6.87486 19.8782 6.68072C19.9586 6.48657 20 6.27848 20 6.06833C20 5.85818 19.9586 5.65009 19.8782 5.45595C19.7978 5.2618 19.6799 5.0854 19.5313 4.93682ZM15.9994 8.46886L11.5316 3.99981L13.9315 1.59978L18.3993 6.06883L15.9994 8.46886Z" fill="#F6F0EB"/>
                                 </svg>
                             </a>
+                            @endcan
 
-
+                            @can('borrar-usuario')  
                             {!! Form::open(['method' => 'DELETE', 'route' => ['usuarios.destroy', $usuario->id], 'style' => 'display:inline']) !!}
                             <button type="submit" class="btn btn-sm btn-danger">Borrar
                             <svg xmlns="http://www.w3.org/2000/svg" width="15" height="20" viewBox="0 0 18 23" fill="none">
@@ -54,6 +57,7 @@
                             </svg>
                             </button>
                             {!! Form::close() !!}
+                            @endcan
                     </td>
 
 <!-- Modal editar -->

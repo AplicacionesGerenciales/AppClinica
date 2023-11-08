@@ -15,8 +15,8 @@ class DiseaseController extends Controller
     public function index()
     {
         $diseases = Disease::paginate();
-        $diseases_group = DiseaseGroup::all();
-        return view('disease.index', compact('diseases','diseases_group'))->with('i', (request()->input('page', 1) - 1) * $diseases->perPage());
+        $diseasesGroup = DiseaseGroup::all();
+        return view('disease.index', compact('diseases','diseasesGroup'))->with('i', (request()->input('page', 1) - 1) * $diseases->perPage());
     }
     public function store(Request $request)
     {

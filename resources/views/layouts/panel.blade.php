@@ -23,8 +23,7 @@
     <!-- endinject -->
     <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}" />
     <link rel="stylesheet" href="{{ asset('css/patien.css') }}">
-
-    
+    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
     @yield('styles')
     
 </head>
@@ -41,56 +40,38 @@
                     <span class="icon-menu"></span>
                 </button>
                 <ul class="navbar-nav navbar-nav-right">
-                
-                    <!-- Right navbar links -->
-
-                <a class="nav-link" data-toggle="dropdown" href="#" style="display: flex">
-                    <i class="fas fa-bell"></i>
-                        @if (count(auth()->user()->unreadNotifications))
-                        <span class="badge badge-warning">{{ count(auth()->user()->unreadNotifications) }}</span>
-                            
-                        @endif
-                        </span>
-                        <h5>Notificaciones</h5>
-                    </a>
-
-        <div class="card-header" style="background: white">  
-            
-            <ul class="navbar-nav ml-auto" style="margin-top: 28%;">
-            <!-- Notifications Dropdown Menu -->
                     <li class="nav-item dropdown">
-
-                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                    <span class="dropdown-header" >Notificaciones no leídas</span>
-                        @forelse (auth()->user()->unreadNotifications as $notification)
-                        <a href="{{ url('doctors.viewNotification') }}" class="dropdown-item">
-                        <i class="fas fa-envelope mr-2"></i>Asunto: <br> {{ $notification->data['affair'] }}
-                        <span class="ml-3 pull-right text-muted text-sm">{{ $notification->created_at->diffForHumans() }}</span>
-                        </a>
-                        @empty
-                        <span class="ml-3 pull-right text-muted text-sm">Sin notificaciones por leer </span>  
-                        @endforelse
-                        
-                        <div class="dropdown-divider"></div>
-                        <span class="dropdown-header">Notificaciones leidas</span>
-                        @forelse (auth()->user()->readNotifications as $notification)
-                        <a href="#" class="dropdown-item">
-                        <i class="fas fa-users mr-2"></i> {{ $notification->data['affair'] }}
-                        <span class="ml-3 pull-right text-muted text-sm">{{ $notification->created_at->diffForHumans() }}</span>
-                        </a>
-                        @empty
-                        <span class="ml-3 pull-right text-muted text-sm">Sin notificaciones leidas                      </span>
-                        @endforelse
-    
-                        
-                        <div class="dropdown-divider"></div> 
-                        <a href="{{ route('markAsRead') }}" class="dropdown-item dropdown-footer">Marcar todo como leido</a>
-                    </div>
-                    </li>
-            </ul>
-
-        </div>
-
+                        <a class="nav-link dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
+                            <i class="fa-solid fa-bell me-lg-2 text-info"></i>
+                            <span class="d-none d-lg-inline-flex">Notificaciones</span>
+                        </a> 
+                        <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
+                            <span class="dropdown-header" >Notificaciones no leídas</span>
+                                <div class="preview-item-content dropdown-header-overflow">
+                                        @forelse (auth()->user()->unreadNotifications as $notification)
+                                        <a href="{{ url('doctors.viewNotification') }}" class="dropdown-item">
+                                        <i class="fas fa-envelope mr-2"></i>Asunto: <br> {{ $notification->data['affair'] }}
+                                        <span class="ml-3 pull-right text-muted text-sm">{{ $notification->created_at->diffForHumans() }}</span>
+                                        </a>
+                                        @empty
+                                        <span class="ml-3 pull-right text-muted text-sm">Sin notificaciones por leer </span>  
+                                        @endforelse
+                                </div>
+                                <span class="dropdown-header">Notificaciones leidas</span>
+                            <div class="dropdown-header-overflow">
+                                @forelse (auth()->user()->readNotifications as $notification)
+                                <a href="#" class="dropdown-item">
+                                <i class="fas fa-users mr-2"></i> {{ $notification->data['affair'] }}
+                                <span class="ml-3 pull-right text-muted text-sm">{{ $notification->created_at->diffForHumans() }}</span>
+                                </a>
+                                @empty
+                                <span class="ml-3 pull-right text-muted text-sm">Sin notificaciones leidas                      </span>
+                                @endforelse
+                            </div>
+                            <div class="dropdown-divider"></div> 
+                            <a href="{{ route('markAsRead') }}" class="dropdown-item dropdown-footer" style="background: rgba(92, 89, 89, 0.568); color:white;">Marcar todo como leido</a>
+                        </div>
+                    </li>   
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
                             <img src="{{ asset('images/faces/face28.jpg') }}" alt="" style="width: 40px; height: 40px;"/>
@@ -261,7 +242,7 @@
     <!-- partial -->
     <!-- partial:partials/_sidebar.html -->
     @include('includes.panel.menu')
-    <!-- partial -->
+    <!-- partial -->ñ
         <div class="main-panel">
             <div class="header bg-primary pb-8 pt-5 pt-md-8" id="header"></div>
                 <div class="content-wrapper">   
@@ -325,7 +306,5 @@
         <!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
         <script src="assets/js/demo.js"></script>
         @yield('js')
-        @yield('scripts')
     </body>
 </html>
-

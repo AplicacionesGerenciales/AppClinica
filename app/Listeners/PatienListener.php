@@ -28,7 +28,7 @@ class PatienListener
         // $user = User::find($event->patient->userr_id);
         // $user->notify(new NotificationX($event->patient));
 
-        $user = User::find(5);
+        $user = User::find(1);
         $user->notify(new NotificationX($event->patient));
 
         $user = User::find(auth()->id());

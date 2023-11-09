@@ -77,7 +77,7 @@
                                                 <div class="mb-3 mb-3-copia">
                                                     <label for="name" class="col-form-label">Nombre</label>
                                                     <input id="name" type="text" value="{{$patient->name}}" class="form-control input-redondeado @error('name') is-invalid @enderror" name="name"  autocomplete="off" autofocus>
-                                                    @error('patients')
+                                                    @error('name')
                                                         <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $message }}</strong>
                                                         </span>
@@ -87,7 +87,7 @@
                                                 <div class="mb-3 mb-3-copia">
                                                     <label for="surname" class="col-form-label">Apellido</label>
                                                     <input id="surname" type="text" value="{{$patient->surname}}" class="form-control input-redondeado @error('surname') is-invalid @enderror" name="surname"  autocomplete="off" autofocus>
-                                                    @error('patient')
+                                                    @error('surname')
                                                         <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $message }}</strong>
                                                         </span>
@@ -97,7 +97,7 @@
                                                 <div class="mb-3 mb-3-copia">
                                                     <label for="identification_card" class="col-form-label">Cedula</label>
                                                     <input id="identification_card" type="text" value="{{$patient->identification_card}}" class="form-control input-redondeado @error('identification_card') is-invalid @enderror" name="identification_card">
-                                                    @error('patient')
+                                                    @error('identification_card')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
                                                     </span>
@@ -108,7 +108,7 @@
                                                     <div>
                                                     <label for="age" class="col-form-label">Edad</label>
                                                     <input id="age" type="text" value="{{$patient->age}}" class="form-control input-redondeado input @error('age') is-invalid @enderror"  name="age" >
-                                                    @error('patient')
+                                                    @error('age')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
                                                     </span>
@@ -118,7 +118,7 @@
                                                 <div class="mb-3 mb-3-copia">
                                                     <label for="gender" class="col-form-label">Sexo</label>
                                                     <input id="gender" type="text" value="{{$patient->gender}}" class="form-control input-redondeado input-gender @error('gender') is-invalid @enderror" name="gender">
-                                                    @error('patient')
+                                                    @error('gender')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
                                                     </span>
@@ -129,7 +129,7 @@
                                                 <div class="mb-3 mb-3-copia mb-3-copia">
                                                     <label for="birthdate" class="col-form-label">Fecha de nacimiento</label>
                                                     <input id="birthdate" type="text" value="{{$patient->birthdate}}" class="form-control input-redondeado @error('birthdate') is-invalid @enderror" name="birthdate">
-                                                    @error('patient')
+                                                    @error('birthdate')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
                                                     </span>
@@ -143,7 +143,7 @@
                             <div class="mb-3">
                                 <label for="phone" class="col-form-label">N° de telefono</label>
                                 <input id="phone" type="text" value="{{$patient->phone}}" class="form-control input-redondeado @error('phone') is-invalid @enderror" name="phone">
-                                @error('patient')
+                                @error('phone')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -154,7 +154,7 @@
                                 <div class="mb-3">
                                     <label for="address" class="col-form-label">Correo electrónico</label>
                                     <input id="address" type="text" value="{{$patient->address}}" class="form-control input-redondeado input_phone @error('address') is-invalid @enderror" name="address">
-                                    @error('patient')
+                                    @error('address')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -163,16 +163,6 @@
                             </div>
 
                         </div>
-
-                            <div class="mb-3 mb-3-copia">
-                                <label style="margin-left:4%;" for="user_id" class="col-form-label">Id usuario</label>
-                                <input style="margin-left:20px; width: 60%;" id="user_id" type="text" value="{{$patient->user_id}}" class="form-control input-redondeado @error('user_id') is-invalid @enderror" name="user_id">
-                                @error('patient')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                            </div>
                         </div>
 
                         <div class="modal-footer">
@@ -196,8 +186,8 @@
         </form>
         <!-- Modal crear -->
         <div class="modal fade" id="CreateModalPosts{{$patient->id}}" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="CreateModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
+            <div class="modal-dialog modal-dialog-copia">
+                <div class="modal-content modal-content-copia">
                     <div class="modal-header">Crear Notificacion
                         <button type="button" class="btn-close btn-close-white" data-dismiss="modal" aria-label="Close"></button>
                     </div>
@@ -206,16 +196,16 @@
                         {{@csrf_field()}}
         
                         <input hidden  id="userr_id" type="text" class="form-control input-redondeado" name="userr_id" value="{{$patient->id}}" autocomplete="off" autofocus>
-                <div class="mb-3">
+                <div class="mb-3 mb-3-notification">
                     <label for="name" class="col-form-label">Destinatario</label>
-                    <input required id="name" type="text" class="form-control input-redondeado" name="name" value="{{$patient->name}}" autocomplete="off" autofocus>
+                    <input readonly required id="name" type="text" class="form-control input-redondeado" name="name" value="{{$patient->name}}" autocomplete="off" autofocus>
                     @error('name')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
                     @enderror
                 </div>
-                <div class="mb-3">
+                <div class="mb-3 mb-3-notification">
                 <label for="affair" class="col-form-label">Asunto</label>
                 <input required id="affair" type="text" class="form-control input-redondeado" name="affair" value="{{old('affair')}}" autocomplete="off" autofocus>
                 @error('affair')
@@ -224,14 +214,14 @@
                     </span>
                 @enderror
             </div>
-                    <div class="mb-3">
+                    <div class="mb-3 mb-3-notification">
                         <label for="message" class="col-form-label mt-3">Mensaje</label>
                         <textarea required id="message" class="form-control input-redondeado" name="message">{{old('message') }}</textarea>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancelar
-                            <i class="fa-solid fa-circle-xmark" style="color: #01499b;"></i>                        
-                        <button type="submit" class="btn btn-primary">Guardar
+                        <button type="button"  class="btn btn-outline-primary btn-notification" data-dismiss="modal">Cancelar
+                            <i class="fa-solid fa-circle-xmark" style="color: #ffffff;"></i>                        
+                        <button type="submit" class="btn btn-primary btn-notification btn-notification-save">Guardar
                             <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><style>svg{fill:#ffffff}</style><path d="M64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V173.3c0-17-6.7-33.3-18.7-45.3L352 50.7C340 38.7 323.7 32 306.7 32H64zm0 96c0-17.7 14.3-32 32-32H288c17.7 0 32 14.3 32 32v64c0 17.7-14.3 32-32 32H96c-17.7 0-32-14.3-32-32V128zM224 288a64 64 0 1 1 0 128 64 64 0 1 1 0-128z"/></svg>
                         </button>
                     </div>
@@ -269,7 +259,7 @@
                                 <div class="mb-3 mb-3-copia">
                                     <label for="name" class="col-form-label">Nombre</label>
                                     <input id="name" type="text" value="{{old('name')}}" class="form-control input-redondeado @error('name') is-invalid @enderror" name="name"  autocomplete="off" autofocus>
-                                    @error('patient')
+                                    @error('name')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
@@ -279,7 +269,7 @@
                                 <div class="mb-3 mb-3-copia">
                                     <label for="surname" class="col-form-label">Apellido</label>
                                     <input id="surname" type="text" value="{{old('surname')}}" class="form-control input-redondeado @error('surname') is-invalid @enderror" name="surname"  autocomplete="off" autofocus>
-                                    @error('patient')
+                                    @error('surname')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
@@ -289,7 +279,7 @@
                                 <div class="mb-3 mb-3-copia">
                                     <label for="identification_card" class="col-form-label">Cedula</label>
                                     <input id="identification_card" type="text" value="{{old('identification_card')}}" class="form-control input-redondeado @error('identification_card') is-invalid @enderror" name="identification_card">
-                                    @error('patient')
+                                    @error('identification_card')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -300,7 +290,7 @@
                                    <div>
                                     <label for="age" class="col-form-label">Edad</label>
                                     <input id="age" type="text" value="{{old('age')}}" class="form-control input-redondeado input @error('age') is-invalid @enderror"  name="age" >
-                                    @error('patient')
+                                    @error('age')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -310,7 +300,7 @@
                                 <div class="mb-3 mb-3-copia">
                                     <label for="gender" class="col-form-label">Sexo</label>
                                     <input id="gender" type="text" value="{{old('gender')}}" class="form-control input-redondeado input-gender @error('gender') is-invalid @enderror" name="gender">
-                                    @error('patient')
+                                    @error('gender')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -321,7 +311,7 @@
                                 <div class="mb-3 mb-3-copia">
                                     <label for="birthdate" class="col-form-label">Fecha de nacimiento</label>
                                     <input id="birthdate" type="text" value="{{old('birthdate')}}" class="form-control input-redondeado @error('birthdate') is-invalid @enderror" name="birthdate">
-                                    @error('patient')
+                                    @error('birthdate')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -335,7 +325,7 @@
                             <div class="mb-3">
                                 <label for="phone" class="col-form-label">N° de telefono</label>
                                 <input id="phone" type="text" value="{{old('phone')}}" class="form-control input-redondeado @error('phone') is-invalid @enderror" name="phone">
-                                @error('patient')
+                                @error('phone')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -346,7 +336,7 @@
                                 <div class="mb-3 mb-3-copia">
                                     <label for="address" class="col-form-label">Correo electrónico</label>
                                     <input id="address" type="text" value="{{old('address')}}" class="form-control input-redondeado input_phone @error('address') is-invalid @enderror" name="address">
-                                    @error('patient')
+                                    @error('address')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -356,15 +346,7 @@
 
                         </div>
 
-                            <div class="mb-3 mb-3-copia">
-                                <label style="margin-left:4%;" for="user_id" class="col-form-label">Id usuario</label>
-                                <input style="margin-left:20px; width: 60%;" id="user_id" type="text" value="{{old('user_id')}}" class="form-control input-redondeado @error('user_id') is-invalid @enderror" name="user_id">
-                                @error('patient')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                            </div>
+                          
                         </div>
                         
                             <div class="modal-footer">

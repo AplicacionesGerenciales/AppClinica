@@ -1,0 +1,191 @@
+.card-copia{
+    width: 135%;
+}
+
+.modal-header-copia{
+    text-align:  center;
+    border-bottom: 1px solid black;
+    padding: 15px 0px 15px 0px;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    text-align: center;
+}
+
+.modal-header-copia h1{
+    font-size: 25px;
+}
+
+.modal-content-copia{
+    width:150%;
+    height: 20%;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    border: 1px solid black;
+    left: -20%;
+}
+
+.modal-body-copia {
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+}
+
+.modal-body-copia h3{
+    border-bottom:  1px solid black;
+    padding-left: 12px;
+    width: 50%;
+}
+
+.modal-row-copia{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    width: 80%;
+    margin-left: 20px;
+}
+
+.mb-3-copia input, .mb-3-notification input{
+    height: 40px;
+    border-radius: 18px;
+    width: 150%;
+    background: rgba(238, 237, 237, 1);
+}
+
+.mb-3-notification input{
+    width: 100%;
+}
+
+.mb-3-notification textarea{
+    background: rgba(238, 237, 237, 1);
+    border-radius: 18px;
+}
+
+.mb-3-copia input:focus{
+    background: rgba(238, 237, 237, 1);
+}
+
+.mb-3-notification input:focus{
+    background: rgba(238, 237, 237, 1);
+}
+
+.mb-3-notification textarea:focus{
+    background: rgba(238, 237, 237, 1);
+}
+
+.mb-3-copia label{
+    margin-left: 4%;
+    margin-top: -5%;
+}
+
+.mb-3-copia .input, .mb-3-copia .input-gender{
+    width: 80%;
+}
+
+.modal-copia .modal-dialog-copia {
+    margin-top: 5px;
+    border: 1px solid black;
+    border-radius: 30px;
+}
+.modal-dialog{border: 1px solid black;}
+
+.modal-copia .modal-dialog-copia .modal-content-copia .modal-body-copia
+{
+    padding: 25px 5px;
+}
+
+.mb-3-mutacion{
+    display: flex;
+    width: 190px;
+}
+
+.input_phone{
+    width: 10%;
+}
+
+.mb-3-contact{
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    margin-left: 3%;
+}
+
+.mb-3-contact input{
+    width: 150%;
+    background: rgba(238, 237, 237, 1);
+}
+
+.mb-3-contact input:focus{
+    background: rgba(238, 237, 237, 1);
+}
+
+
+
+.CreateModal .modal-copia .fade-copia .show{
+    background: black;
+}
+
+
+
+div.dataTables_wrapper div.dataTables_filter input{
+    border-radius: 10px;
+}
+
+div.dataTables_wrapper div.dataTables_filter label{
+    margin-left: -80%;
+}
+
+#btn-edit{
+    padding: 3% 9% ;
+    border-radius: 12px;
+}
+
+#btn-style{
+    width: 17%;
+    height: 45px;
+}
+
+.btn-notification{
+    height: 3.2em;
+    color: white;
+    background: rgba(92, 89, 89, 1);
+}
+
+.btn-notification-save{
+    background-color: #0C67F1;
+}
+
+.btn-notification:hover{
+    background: rgba(92, 89, 89, 1);
+    color: none;
+}
+.btn-notification-save:hover{
+    background: #0048b4;
+    color: none;
+}
+
+/* estilos para el navbar */
+
+.navbar .navbar-menu-wrapper .navbar-nav .nav-item.dropdown .dropdown-menu{
+    max-height: 28em;
+}
+
+.dropdown-header-overflow{
+    max-height: 8em;
+    overflow-y: scroll;
+}
+
+
+/* estilos del contenedor de las notificaciones */
+.card-body-copia{
+    max-height: 32em;
+    overflow-y: scroll;
+    position: relative;
+}
+
+#mark-all{
+    position: relative;
+    right: 0;
+    top: 0;
+}

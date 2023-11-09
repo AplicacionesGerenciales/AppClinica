@@ -48,8 +48,12 @@ class PatientController extends Controller
 
     public function store(Request $request)
     {
+        $request->merge([
+            'user_id' => auth()->id(),
+        ]);
+
         request()->validate(Patient::$rules, Patient::$messages); 
-        Patient::create($request->all());
+        Patient::create($request->all()); 
 
         //esto lo que hace es enviar la notificion al mismo que crea es decir al el mismo
         //auth()->user()->notify(new NotificationX($patient));
@@ -79,16 +83,16 @@ class PatientController extends Controller
         return redirect()->route('patients.index')->with('mensaje', 'OkDelete');
     }
 
-    // public function markNotification(Request $request)
-    // {
-    //     auth()->user()->unreadNotifications
-    //     ->when($request->input('id'), function($query) use ($request)
-    //     {
-    //         return $query->where('id', $request->input('id'));
-    //     })->marKAsRead();
+    public function markNotification(Request $request)
+    {
+        auth()->user()->unreadNotifications
+        ->when($request->input('id'), function($query) use ($request)
+        {
+            return $query->where('id', $request->input('id'));  
+        })->marKAsRead();
 
-    //     return response()->noContent();
-    // }
+        return response()->noContent();
+    }
 
     // public function PatientNotification()
     // {

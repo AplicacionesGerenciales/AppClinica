@@ -29,15 +29,15 @@ use Illuminate\Database\Eloquent\Model;
 class Patient extends Model
 {
     static $rules = [
-		'name' => 'required',
-		'surname' => 'required',
-		'age' => 'required',
-		'gender' => 'required',
-		'identification_card' => 'required',
-		'phone' => 'required',
-		'birthdate' => 'required',
-		'address' => 'required',
-		'user_id' => 'required',
+		'name' => 'required', 
+		'surname' => 'required', 
+		'age' => 'required', 
+		'gender' => 'required', 
+		'identification_card' => 'required', 
+		'phone' => 'required', 
+		'birthdate' => 'required', 
+		'address' => 'required', 
+		'user_id' => 'required', 
     ];
     static $messages = [
         'name.required' => 'Obligatorio',
@@ -56,7 +56,7 @@ class Patient extends Model
         'address.min' => 'Minimo 3 caracteres',
         ];
     protected $perPage = 20;
-    protected $fillable = ['name','surname','age','gender','identification_card','phone','birthdate','address','user_id'];
+    protected $fillable = ['id', 'name','surname','age','gender','identification_card','phone','birthdate','address','user_id'];
 
     public function appointments()
     {

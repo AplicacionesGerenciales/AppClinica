@@ -1,6 +1,13 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
+
+                <!-- para aplicar el diseño css --> 
+<link rel="stylesheet" href="{{ asset('css/global/globals.css') }}">
+<link rel="stylesheet" href="{{ asset('css/styleguide/styleguide.css') }}">
+<link rel="stylesheet" href="{{ asset('css/crud/appointments.css') }}">
+                <!-- para aplicar el diseño css --> 
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 

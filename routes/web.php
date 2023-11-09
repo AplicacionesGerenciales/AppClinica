@@ -58,6 +58,7 @@ Route::post('/mark-as-read',[PatientController::class, 'markNotification'])->nam
 
 Route::get('/patient/PatientNotification', 'PatientController@PatientNotification')->name('patients.PatientNotification');
 Route::get('/patients.importExcel',[\App\Http\Controllers\PatientController::class, 'importExcel'])->name('patients.importExcel');
+Route::get('/appointments.importExcel',[\App\Http\Controllers\AppointmentController::class, 'importExcel'])->name('appointments.importExcel');
 
 
 Route::get('/doctors.viewNotification',[\App\Http\Controllers\DoctorController::class, 'viewNotification']);

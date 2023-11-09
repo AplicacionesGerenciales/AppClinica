@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Appointment;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\AppointmentsExport;
 /**
  * Class AppointmentController
  * @package App\Http\Controllers
@@ -38,7 +40,7 @@ class AppointmentController extends Controller
         // Guardar el nuevo registro
         $appointment->save();
 
-        return redirect()->route('appointments.index')->with('success', 'Appointment created successfully.');
+        return redirect()->route('appointments.index')->with('mensaje', 'OkCreate');
     }
     public function show($id)
     {
@@ -59,11 +61,15 @@ class AppointmentController extends Controller
         request()->validate(Appointment::$rules, Appointment::$messages);
         $Appointment = request()->except('_token', '_method');
         Appointment::where('id', $id)->update($Appointment);
-        return redirect()->route('appointments.index')->with('success', 'Appointment updated successfully');
+        return redirect()->route('appointments.index')->with('mensaje', 'OkUpdate');
     }
     public function destroy($id)
     {
         Appointment::find($id)->delete();
-        return redirect()->route('appointments.index')->with('success', 'Appointment deleted successfully');
+        return redirect()->route('appointments.index')->with('mensaje', 'OkDelete');
+    }
+
+    public function importExcel(){
+        return Excel::download(new AppointmentsExport, 'Appointments.xlsx');
     }
 }

@@ -41,9 +41,7 @@
                             </div>
                         </div>        
                     </div>
-                    </div>
-                </div>
-                <div class ="body" align ="right">
+                    <div class ="body" align ="right">
                         <button type="button" class="btn btn-outline-primary mt-4 ml-3" data-dismiss="modal">Cancelar
                             <i class="fa-solid fa-circle-xmark" style="color: #01499b;"></i> 
                         </button>                       
@@ -53,6 +51,9 @@
                        
                     {!! Form::close() !!}
                 </div>
+                    </div>
+                </div>
+                
                 
             </div>
         </div>

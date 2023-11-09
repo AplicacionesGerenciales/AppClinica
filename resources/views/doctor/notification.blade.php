@@ -13,7 +13,7 @@
         <div class="card-header">
           Notificaciones no leídas 
         </div>
-        <div class="card-body">
+        <div class="card-body card-body-copia">
 
           @if (auth()->user())
           @forelse ($postNotifications as $notification)
@@ -22,10 +22,10 @@
             <strong class="text-info">Asunto: </strong>{{ $notification->data['affair'] }}<br>
             <strong class="text-info">Mensaje: </strong>{{ $notification->data['message'] }}<br>
             <p>{{ $notification->created_at->diffForHumans() }}</p>
-            <button type="submit" class="mark-as-read btn btn-sm btn-primary" data-id="{{ $notification->id }}">Marcar como leido</button>
+            <button id="btn_reload" type="submit" class="mark-as-read btn btn-sm btn-primary" data-id="{{ $notification->id }}">Marcar como leido</button>
           </div>
           @if ($loop->last)
-            <a href="#" id="mark-all" class="btn btn-success float-right">Marcar todo como leido</a>
+            <a href="{{ route('markAsRead') }}" id="mark-all" class="btn btn-success ">Marcar todo como leido</a>
               
           @endif
           
@@ -42,35 +42,40 @@
 </div>
 @endsection
 
-@section('scripts')
+@section('js')
 <script>
-function sendMarkRequest(id = null){
-  return $.ajax("{{ route('markNotification') }}", {
-    method: 'POST',
-    data: {
-      _token: "{{ csrf_token() }}",
-      id
-    }
-  });
-}
+  function sendMarkRequest(id = null){
+    return $.ajax("{{ route('markNotification') }}", {
+      method: 'POST',
+      data: {
+        _token: "{{ csrf_token() }}",
+        id
+      }
+    });
+  }
 
-$(function(){
-  $('.mark-as-read').click(function(){
-    let request = sendMarkRequest($(this).data('id'));
+  $(function(){
+    $('.mark-as-read').click(function(){
+      let request = sendMarkRequest($(this).data('id'));
 
-    request.done(() => {
-      $(this).parents('div.alert').remove();
+      request.done(() => {
+        $(this).parents('div.alert').remove();
+      });
+    });
+
+    $('#mark-all').click(function(){
+      let request = sendMarkRequest();
+
+      request.done(() => {
+        $('div.alert').remove();
+      })
     });
   });
 
-  $('#mark-all').click(function(){
-    let request = sendMarkRequest();
+  const $btnReload = document.getElementById('btn_reload');
 
-    request.done(() => {
-      $('div.alert').remove();
-    })
-  });
+$btnReload.addEventListener('click', (e)=>{
+  location.reload();
 });
 </script>
 @endsection
-

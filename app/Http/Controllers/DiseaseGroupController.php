@@ -20,18 +20,18 @@ class DiseaseGroupController extends Controller
     {
         request()->validate(DiseaseGroup::$rules, DiseaseGroup::$messages);
         DiseaseGroup::create($request->all());
-        return redirect()->route('disease-groups.index')->with('success', 'DiseaseGroup created successfully.');
+        return redirect()->route('disease-groups.index')->with('mansaje', 'OkCreate');
     }
     public function update(Request $request, $id)
     {
         request()->validate(DiseaseGroup::$rules, DiseaseGroup::$messages);
         $DiseaseGroup = request()->except('_token', '_method');
         DiseaseGroup::where('id', $id)->update($DiseaseGroup);
-        return redirect()->route('disease-groups.index')->with('success', 'DiseaseGroup updated successfully');
+        return redirect()->route('disease-groups.index')->with('mansaje', 'OkUpdate');
     }
     public function destroy($id)
     {
         DiseaseGroup::find($id)->delete();
-        return redirect()->route('disease-groups.index')->with('success', 'DiseaseGroup deleted successfully');
+        return redirect()->route('disease-groups.index')->with('mansaje', 'OkDelete');
     }
 }

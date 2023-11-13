@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\UserSettingsController;
+use App\Models\UserSettings;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -42,9 +44,11 @@ Route::resource('schedules', \App\Http\Controllers\ScheduleController::class);
 Route::resource('specialties', \App\Http\Controllers\SpecialtyController::class);
 Route::resource('status-appointments', \App\Http\Controllers\StatusAppointmentController::class);
 Route::resource('type-examinations', \App\Http\Controllers\TypeExaminationController::class);
-
-});
-
+Route::get('/profile', [App\Http\Controllers\PatientController::class, 'profile'])->name('Perfil');
+Route::post('/updatepassword', [App\Http\Controllers\PatientController::class, 'updatepassword'])->name('ActualizarContraseña');
+// Route::get('/profiledoctor', [App\Http\Controllers\DoctorController::class, 'profiledoctor'])->name('Perfil');
+// Route::get('/NewPassword', [UserSettingsController::class,'NewPassword'])->name('Perfil')->middleware('auth');
+// Route::post('/change/password', [UserSettingsController::class,'changePassword'])->name('ChangePassword');
 //Route::get('appointments/{id}', 'ShowAppointmentController@show')->name('appointments.show');
 
 
@@ -63,6 +67,8 @@ Route::get('/appointments.importExcel',[\App\Http\Controllers\AppointmentControl
 
 Route::get('/doctors.viewNotification',[\App\Http\Controllers\DoctorController::class, 'viewNotification']);
 Route::post('/createNotification',[\App\Http\Controllers\DoctorController::class, 'createNotification'])->name('doctors.createNotification');
+});
+
 
 
 

@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Events\PatienEvent;
 use App\Models\Patient;
+use App\Models\Doctor;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Notifications\NotificationX;
 use App\Models\User;
 use Maatwebsite\Excel\Facades\Excel;
@@ -103,4 +105,30 @@ class PatientController extends Controller
         return Excel::download(new PatientsExport, 'patient.xlsx');
     }
 
+    public function profile()
+    {
+        $id = Auth::id();
+        $idusers = user::where('id', $id)->pluck('id')->first();
+        $idpatient = Patient::where('user_id', $idusers)->pluck('id')->first();
+
+        if($idpatient != null){
+            $patients = Patient::find($idpatient);
+            return view('patient.create', compact('patients'));
+        }
+        else{
+            $iddoctor = Doctor::where('user_id', $idusers)->pluck('id')->first();
+            if($iddoctor != null){
+                $doctors = Doctor::find($iddoctor);
+                return view('doctor.create', compact('doctors'));
+            }
+        }
+    }
+    public function updatepassword(Request $password)
+    {
+        $id = Auth::id();
+        $users = User::find($id);
+        $users->password = bcrypt($password);
+        $users->save();
+        return back()->with('mensaje', 'OkPasswordUpdate');
+    }
 }

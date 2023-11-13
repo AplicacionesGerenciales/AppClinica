@@ -5,6 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\Doctor;
 use App\Models\Specialty;
 use Illuminate\Http\Request;
+use App\Events\PatienEvent;
+use App\Models\Patient;
+use App\Notifications\NotificationX;
+use App\Models\User;
+use PhpParser\Node\Expr\FuncCall;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Post;
 
 
 
@@ -21,6 +28,11 @@ class DoctorController extends Controller
 
         return view('doctor.index', compact('doctors','especialidad'))->with('i', (request()->input('page', 1) - 1) * $doctors->perPage());
 
+    }
+    public function create()
+    {
+        $doctor = new Doctor(); // Crear una instancia vacía del modelo Doctor o cargar datos predeterminados según tu lógica de negocio
+        return view('doctor.create', compact('doctor'));
     }
 
     public function store(Request $request)
@@ -45,5 +57,26 @@ public function update(Request $request, $id)
     {
         Doctor::find($id)->delete();
         return redirect()->route('doctors.index')->with('success', 'Doctor deleted successfully');
+    }
+
+    public function createNotification(Request $request){
+
+        $data = $request->all();
+        $data['userr_id'] = Auth::id();
+        $post = Post::create($data);
+
+        event(new PatienEvent($post));
+
+
+        return redirect()->back()->with('mensaje', 'OkCreateNotification');
+    } 
+
+    public function viewNotification(){
+
+        $postNotifications = auth()->user()->unreadNotifications;
+        $user = \App\Models\User::find(1);
+        
+    // Pasa la instancia del modelo a la vista "create" para mostrar el formulario
+    return view('doctor.notification', compact('postNotifications'));
     }
 }

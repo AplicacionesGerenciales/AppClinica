@@ -22,8 +22,8 @@
     <link rel="stylesheet" href="{{ asset('css/all.min.css') }}">
     <!-- endinject -->
     <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}" />
-
-    
+    <link rel="stylesheet" href="{{ asset('css/patien.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
     @yield('styles')
     
 </head>
@@ -46,51 +46,30 @@
                             <span class="d-none d-lg-inline-flex">Notificaciones</span>
                         </a> 
                         <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
-                            <p class="mb-0 font-weight-normal float-left dropdown-header">Notificaciones</p>
-                            <a class="dropdown-item preview-item">
-                                <div class="preview-thumbnail">
-                                    <div class="preview-icon bg-success">
-                                    <i class="ti-info-alt mx-0"></i>
-                                    </div>
+                            <span class="dropdown-header" >Notificaciones no leídas</span>
+                                <div class="preview-item-content dropdown-header-overflow">
+                                        @forelse (auth()->user()->unreadNotifications as $notification)
+                                        <a href="{{ url('doctors.viewNotification') }}" class="dropdown-item">
+                                        <i class="fas fa-envelope mr-2"></i>Asunto: <br> {{ $notification->data['affair'] }}
+                                        <span class="ml-3 pull-right text-muted text-sm">{{ $notification->created_at->diffForHumans() }}</span>
+                                        </a>
+                                        @empty
+                                        <span class="ml-3 pull-right text-muted text-sm">Sin notificaciones por leer </span>  
+                                        @endforelse
                                 </div>
-                                <div class="preview-item-content">
-                                    <h6 class="preview-subject font-weight-normal">¡Has recibido un mensaje!</h6>
-                                    <p class="font-weight-light small-text mb-0 text-muted">
-                                        Justo Ahora
-                                    </p>
-                                </div>
-                            </a>
-                            <a class="dropdown-item preview-item">
-                                <div class="preview-thumbnail">
-                                    <div class="preview-icon bg-warning">
-                                        <i class="ti-settings mx-0"></i>
-                                    </div>
-                                </div>
-                                <div class="preview-item-content">
-                                    <h6 class="preview-subject font-weight-normal">¡Perfil Actualizado!</h6>
-                                    <p class="font-weight-light small-text mb-0 text-muted">
-                                        Hace 5 minutos
-                                    </p>
-                                </div>
-                            </a>
-                            <a class="dropdown-item preview-item">
-                                <div class="preview-thumbnail">
-                                    <div class="preview-icon bg-info">
-                                        <i class="ti-user mx-0"></i>
-                                    </div>
-                                </div>
-                                <div class="preview-item-content">
-                                    <h6 class="preview-subject font-weight-normal">¡Nueva cita agendada!</h6>
-                                    <p class="font-weight-light small-text mb-0 text-muted">
-                                        hace 10 minutos
-                                    </p>
-                                </div>
-                                <hr class="dropdown-divider">
-                            </a>
-                            <a class="dropdown-item preview-item nav-item2 nav-settings d-none d-lg-flex">
-                                <p class="mb-0 font-weight-normal float-left dropdown-header text-info">Ver todas las notificaciones</p>
-                                <hr class="dropdown-divider">
-                            </a>
+                                <span class="dropdown-header">Notificaciones leidas</span>
+                            <div class="dropdown-header-overflow">
+                                @forelse (auth()->user()->readNotifications as $notification)
+                                <a href="#" class="dropdown-item">
+                                <i class="fas fa-users mr-2"></i> {{ $notification->data['affair'] }}
+                                <span class="ml-3 pull-right text-muted text-sm">{{ $notification->created_at->diffForHumans() }}</span>
+                                </a>
+                                @empty
+                                <span class="ml-3 pull-right text-muted text-sm">Sin notificaciones leidas                      </span>
+                                @endforelse
+                            </div>
+                            <div class="dropdown-divider"></div> 
+                            <a href="{{ route('markAsRead') }}" class="dropdown-item dropdown-footer" style="background: rgba(92, 89, 89, 0.568); color:white;">Marcar todo como leido</a>
                         </div>
                     </li>   
                     <li class="nav-item dropdown">
@@ -329,4 +308,3 @@
         @yield('js')
     </body>
 </html>
-

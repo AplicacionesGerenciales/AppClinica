@@ -1,0 +1,53 @@
+.modal-header-extra{
+    text-align:  center;
+    border-bottom: 1px solid black;
+    padding: 3% 0px 3% 0px;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    text-align: center;
+}
+.modal-header-extra2{
+    padding: 15% 0px 0px 0px;
+    margin: -10% 0px -5% 5%;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+}
+
+.modal-content-extra{
+    margin-top: -20%;
+    border-radius: 18px;
+}
+
+/* .boton-gua{
+Color: #ffffff;
+Font: 14px nunito, sans-serif;
+Background: #0c67f1;
+margin: 4px;
+Padding: 14px 24px;
+}
+
+.boton-can{
+    Color: #ffffff;
+    Font: 14px nunito, sans-serif;
+    Background: #5c5959;
+    margin: 4px;
+    Padding: 14px 24px;
+} */
+
+.boton-estilo {
+    width: 30%;
+    height: 3em;
+}
+
+.mb-3-extra input{
+    height: 40px; 
+    border-radius: 18px;
+    background: rgba(238, 237, 237, 1);
+}
+
+#btn-editar{
+    padding: 3% 9%;
+    border-radius: 12px;
+    width: 60%;
+    height: 80%;
+}

@@ -31,6 +31,7 @@
                     <li class="nav-item"><a class="nav-link" href="{{ route('doctors.index') }}">Medicos</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ route('examinations.index') }}">Examenes</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ route('files.index') }}">Expedientes</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url('doctors.viewNotification') }}">Notificaciones</a></li>
                 </ul>
             </div>
         </li>

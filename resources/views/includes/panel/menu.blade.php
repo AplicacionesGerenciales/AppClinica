@@ -43,13 +43,21 @@
             </a>
             <div class="collapse" id="Administracion">
                 <ul class="nav flex-column sub-menu">
+                    
                     <li class="nav-item"> <a class="nav-link" href="{{ route('antecedents.index') }}">Antecedentes</a></li>
+                    
                     <li class="nav-item"> <a class="nav-link" href="{{ route('specialties.index') }}">Especialidades</a></li>
                     <li class="nav-item"> <a class="nav-link" href="{{ route('diseases.index') }}">Enfermedades</a></li>
                     <li class="nav-item"> <a class="nav-link" href="{{ route('disease-groups.index') }}">Enfermedades</a></li>
                     <li class="nav-item"> <a class="nav-link" href="{{ route('medicines.index') }}">Medicamentos</a></li>
                     <li class="nav-item"> <a class="nav-link" href="{{ route('schedules.index') }}">Horarios</a></li>
                     <li class="nav-item"> <a class="nav-link" href="{{ route('type-examinations.index') }}">Tipo de examen</a></li>
+                    @can('ver-usuario')
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('usuarios.index') }}">Usuarios</a></li>
+                    @endcan
+                    @can('ver-rol')
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('roles.index') }}">Roles</a></li>
+                    @endcan
                 </ul>
             </div>
         </li>

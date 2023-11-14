@@ -5,6 +5,12 @@ use App\Models\UserSettings;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
+//agregamos los siguientes controladores
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\RolController;
+use App\Http\Controllers\UsuarioController;
+use App\Http\Controllers\BlogController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -67,45 +73,7 @@ Route::get('/appointments.importExcel',[\App\Http\Controllers\AppointmentControl
 
 Route::get('/doctors.viewNotification',[\App\Http\Controllers\DoctorController::class, 'viewNotification']);
 Route::post('/createNotification',[\App\Http\Controllers\DoctorController::class, 'createNotification'])->name('doctors.createNotification');
+Route::resource('roles', RolController::class);
+Route::resource('usuarios', UsuarioController::class);
+
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

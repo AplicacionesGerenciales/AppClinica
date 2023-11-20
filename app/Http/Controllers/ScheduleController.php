@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Models\Schedule;
+use App\Models\Doctor;
 use Illuminate\Http\Request;
 
 /**
@@ -14,7 +16,8 @@ class ScheduleController extends Controller
     public function index()
     {
         $schedules = Schedule::paginate();
-        return view('schedule.index', compact('schedules'))->with('i', (request()->input('page', 1) - 1) * $schedules->perPage());
+        $doctores = Doctor::all();
+        return view('schedule.index', compact('schedules','doctores'))->with('i', (request()->input('page', 1) - 1) * $schedules->perPage());
     }
     public function store(Request $request)
     {

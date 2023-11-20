@@ -60,7 +60,11 @@
 											<td>{{ $schedule->start_time }}</td>
 											<td>{{ $schedule->departure_time }}</td>
 											<td>{{ $schedule->shift }}</td>
-											<td>{{ $schedule->doctor_id }}</td>
+											<td>        @foreach ($doctores as $doctor)
+                                                @if ($doctor->id === $schedule->doctor_id)
+                                                    {{ $doctor->name }}  {{ $doctor->lastname }}
+                                                @endif
+                                            @endforeach</td>
 
                                             <td>
                                                 <div class="modal fade" id="UpdateModal{{$schedule->id}}" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="UpdateModalLabel" aria-hidden="true">
@@ -129,8 +133,15 @@
                                                                         </div>
                                                                         <div class="col-md-6">
                                                                             <div class="mb-3">
-                                                                                <label for="doctor_id" class="form-label">Doctor id</label>
-                                                                                <input type="number" id="doctor_id" class="form-control input-redondeado @error('doctor_id') is-invalid @enderror" name="doctor_id" value="{{ $schedule->doctor_id}}" required>
+                                                                                <label for="doctor_id" class="form-label">Doctor</label>
+                                                                                <select id="doctor_id" name="doctor_id" class="form-select form-control input-redondeado"  >
+                                                                                    <option value="" disabled selected>Seleccione un doctor</option>
+                                                                                    @foreach ($doctores as $doctor)
+                                                                                        <option value="{{ $doctor->id }}" @if ($doctor->id == $schedule->doctor_id) selected @endif >
+                                                                                            {{ $doctor->name }} {{ $doctor->lastname }}
+                                                                                        </option>
+                                                                                    @endforeach
+                                                                                </select>
                                                                                 @error('doctor_id')
                                                                                 <span class="invalid-feedback" role="alert">
                                                                                     <strong>{{ $message }}</strong>
@@ -226,8 +237,15 @@
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="mb-3">
-                                                    <label for="doctor_id" class="form-label">ID Doctor</label>
-                                                    <input type="number" id="doctor_id" class="form-control input-redondeado @error('doctor_id') is-invalid @enderror" name="doctor_id"  value="{{ old('doctor_id') }}" >
+                                                     <label for="doctor_id" class="form-label">Seleccionar Doctor</label>
+                                                     <select id="doctor_id" name="doctor_id" class="form-select form-control input-redondeado"  >
+                                                <option value="" disabled selected>Seleccione un doctor</option>
+                                                @foreach ($doctores as $doctor)
+                                                    <option value="{{ $doctor->id }}">
+                                                        {{ $doctor->name }} {{ $doctor->lastname }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
                                                     @error('doctor_id')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
@@ -235,6 +253,7 @@
                                                     @enderror
                                                 </div>
                                             </div>
+
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancelar

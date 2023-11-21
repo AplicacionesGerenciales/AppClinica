@@ -11,6 +11,14 @@ use Illuminate\Http\Request;
  */
 class TypeExaminationController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('permission:ver-tipo-examen', ['only' => ['index']]);
+        $this->middleware('permission:crear-tipo-examen', ['only' => ['create','store']]);
+        $this->middleware('permission:editar-tipo-examen', ['only' => ['edit','update']]);
+        $this->middleware('permission:borrar-tipo-examen', ['only' => ['destroy']]);
+    }
+    
     public function index()
     {
         $typeExaminations = TypeExamination::paginate();

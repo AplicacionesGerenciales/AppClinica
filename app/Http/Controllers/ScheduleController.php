@@ -11,6 +11,14 @@ use Illuminate\Http\Request;
  */
 class ScheduleController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('permission:ver-horario', ['only' => ['index']]);
+        $this->middleware('permission:crear-horario', ['only' => ['create','store']]);
+        $this->middleware('permission:editar-horario', ['only' => ['edit','update']]);
+        $this->middleware('permission:borrar-horario', ['only' => ['destroy']]);
+    }
+
     public function index()
     {
         $schedules = Schedule::paginate();

@@ -12,6 +12,14 @@ use Illuminate\Http\Request;
  */
 class AntecedentController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('permission:ver-antecedente', ['only' => ['index']]);
+        $this->middleware('permission:crear-antecedente', ['only' => ['create','store']]);
+        $this->middleware('permission:editar-antecedente', ['only' => ['edit','update']]);
+        $this->middleware('permission:borrar-antecedente', ['only' => ['destroy']]);
+    }
+
     public function index()
     {
         $antecedents = Antecedent::paginate();

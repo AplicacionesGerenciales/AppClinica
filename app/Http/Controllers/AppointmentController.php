@@ -13,6 +13,14 @@ use App\Exports\AppointmentsExport;
  */
 class AppointmentController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('permission:ver-cita', ['only' => ['index']]);
+        $this->middleware('permission:crear-cita', ['only' => ['create','store']]);
+        $this->middleware('permission:editar-cita', ['only' => ['edit','update']]);
+        $this->middleware('permission:borrar-cita', ['only' => ['destroy']]);
+    }
+
     public function index()
     {
         $appointments = Appointment::paginate();

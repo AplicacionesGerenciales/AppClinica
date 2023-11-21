@@ -7,7 +7,7 @@
             <h3 class="color-text mt-3 ml-3">Roles</h3>
         </div>
         @can('crear-rol')
-        <div class="col text-right">            
+        <div class="col text-right">         
             <a class="text-white mr-3 mt-3 btn btn-primary"   onclick="openCreateModal()" data-modal-origin="create">Nuevo
                 <i class="mr-2 fa-sharp fa-solid fa-plus"></i>
             </a>
@@ -55,9 +55,11 @@
 <div class="modal fade" id="editModal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="CreateModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
+            
             <div class="modal-header">Editar Rol
                 <button type="button" class="btn-close btn-close-white" data-dismiss="modal" aria-label="Close"></button>
             </div>
+            
             <div class="modal-body" id="editModalContent">
                <!-- aqui se carga todo lo de editar-->
             </div>

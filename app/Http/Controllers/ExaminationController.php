@@ -13,6 +13,14 @@ use Illuminate\Http\Request;
  */
 class ExaminationController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('permission:ver-examen', ['only' => ['index']]);
+        $this->middleware('permission:crear-examen', ['only' => ['create','store']]);
+        $this->middleware('permission:editar-examen', ['only' => ['edit','update']]);
+        $this->middleware('permission:borrar-examen', ['only' => ['destroy']]);
+    }
+
     public function index()
     {
         $examinations = Examination::paginate();

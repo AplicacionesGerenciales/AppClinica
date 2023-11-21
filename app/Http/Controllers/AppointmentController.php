@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\AppointmentsExport;
+use App\Models\Doctor;
+use App\Models\Patient;
+use App\Models\StatusAppointment;
+
 /**
  * Class AppointmentController
  * @package App\Http\Controllers
@@ -15,8 +19,25 @@ class AppointmentController extends Controller
 {
     public function index()
     {
+        /* $appointments = Appointment::paginate();
+    
+
+        return view('appointment.index', compact('appointments', 'patient', 'doctor', 'appointment_status'))->with('i', (request()->input('page', 1) - 1) * $appointments->perPage()); 
+     */
+    
         $appointments = Appointment::paginate();
-        return view('appointment.index', compact('appointments'))->with('i', (request()->input('page', 1) - 1) * $appointments->perPage()); 
+        $doctor = Doctor::all();
+        $appointment_status = StatusAppointment::all();
+        $patient = Patient::all();
+        $doctors = Doctor::join('appointments', 'doctors.id', '=', 'appointments.doctor_id')
+        ->join('patients', 'patients.id', '=', 'appointments.patient_id')
+        ->join('status_appointments', 'status_appointments.id', '=', 'appointments.appointment_status_id')
+        ->select('appointments.doctor_id as appointment_status_id', 'appointments.doctor_id as doctor_id', 'appointments.patient_id as patient_id','appointments.id as id', 'appointments.date as date', 'appointments.comment as comment' ,'patients.name as patient', 'doctors.name as doctor', 'status_appointments.state as appointment_status')
+        ->get(); 
+
+        return view('appointment.index', compact('patient', 'doctor', 'appointment_status'))->with('i', (request()->input('page', 1) - 1) * $appointments->perPage())->with('appointments', $doctors); 
+
+      //  return view('appointment.index', compact('patient', 'doctor', 'appointment_status'))->with('appointments', $doctors); 
     }
     public function create()
     {

@@ -49,25 +49,26 @@
                             <table id= "datatable" class="table table-striped table-hover">
                                 <thead class="thead">
                                     <tr>
-                                        <th>No</th>
+                                    <th scope="col" class="color-text">No</th>
+
 										<th>Fecha</th>
 										<th>Comentario</th>
-										<th>ID paciente</th>
-										<th>ID Doctor</th>
-										<th>ID estado cita</th>
-										<th>opciones</th>
+										<th>Paciente</th>
+										<th>Doctor</th>
+										<th>Estado cita</th>
+										<th>Opciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($appointments as $appointment)
                                         <tr>
-                                            <td>{{ ++$i }}</td>
+                                        <td>{{ ++$i }}</td>
+
 											<td>{{ $appointment->date }}</td>
 											<td>{{ $appointment->comment }}</td>
-											<td>{{ $appointment->patient_id }}</td>
-											<td>{{ $appointment->doctor_id }}</td>
-											<td>{{ $appointment->appointment_status_id }}</td>
-
+											<td>{{ $appointment->patient }}</td>
+											<td>{{ $appointment->doctor }}</td>
+											<td>{{ $appointment->appointment_status }}</td>
                                             <td> 
                                                 <!-- esto de modal sirve para que se muestre la informacion en una ventana emergente -->
                                                 <div class="modal fade" id="UpdateModal{{$appointment->id}}" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="UpdateModalLabel" aria-hidden="true">
@@ -102,7 +103,7 @@
                                                                         @enderror
                                                                     </div>
 
-                                                                    <div class="mb-3 mb-3-extra">
+                                                                    <!-- <div class="mb-3 mb-3-extra">
                                                                         <label for="patient_id" class="col-form-label">id_paciente</label>
                                                                         <input id="patient_id" type="text" value="{{ $appointment->patient_id }}" class="form-control input-redondeado @error('patient_id') is-invalid @enderror" name="patient_id"  autocomplete="off" autofocus>
                                                                         @error('patient_id')
@@ -110,9 +111,20 @@
                                                                                 <strong>{{ $message }}</strong>
                                                                             </span>
                                                                         @enderror
-                                                                    </div>
+                                                                    </div> --> 
+                                                                    <div class="col-5">
+                                                                        <label class="mb-3" style='width:500px' for="patient_id">Paciente</label>
+                                                                            <select name="patient_id" class="form-control input-redondeado" required>
+                                                                                <option selected disabled value="">Seleccionar</option>
+                                                                                    @foreach($patient as $Idpaciente)
+                                                                                        <option value="{{$Idpaciente->id}}"  {{$Idpaciente->id == $appointment->patient_id ? 'selected' : ''}} >
+                                                                                            {{$Idpaciente->name}} 
+                                                                                        </option>
+                                                                                    @endforeach
+                                                                            </select>
+                                                                    </div> 
 
-                                                                    <div class="mb-3 mb-3-extra">
+                                                                    <!-- <div class="mb-3 mb-3-extra">
                                                                         <label for="doctor_id" class="col-form-label">id_doctor</label>
                                                                         <input id="doctor_id" type="text" value="{{ $appointment->doctor_id }}" class="form-control input-redondeado @error('doctor_id') is-invalid @enderror" name="doctor_id"  autocomplete="off" autofocus>
                                                                         @error('doctor_id')
@@ -120,9 +132,20 @@
                                                                                 <strong>{{ $message }}</strong>
                                                                             </span>
                                                                         @enderror
-                                                                    </div>
+                                                                    </div> -->
+                                                                    <div class="col-5">
+                                                                        <label class="mb-3" style='width:500px' for="doctor_id">Doctor</label>
+                                                                            <select name="doctor_id" class="form-control input-redondeado" required>
+                                                                                <option selected disabled value="">Seleccionar</option>
+                                                                                    @foreach($doctor as $Iddoctor)
+                                                                                        <option value="{{$Iddoctor->id}}"  {{$Iddoctor->id == $appointment->doctor_id ? 'selected' : ''}} >
+                                                                                            {{$Iddoctor->name}} 
+                                                                                        </option>
+                                                                                    @endforeach
+                                                                            </select>
+                                                                    </div> 
 
-                                                                    <div class="mb-3 mb-3-extra">
+                                                                    <!-- <div class="mb-3 mb-3-extra">
                                                                         <label for="appointment_status_id" class="col-form-label">id_estado_cita</label>
                                                                         <input id="appointment_status_id" type="text" value="{{ $appointment->appointment_status_id }}" class="form-control input-redondeado @error('appointment_status_id') is-invalid @enderror" name="appointment_status_id"  autocomplete="off" autofocus>
                                                                         @error('appointment_status_id')
@@ -130,7 +153,18 @@
                                                                                 <strong>{{ $message }}</strong>
                                                                             </span>
                                                                         @enderror
-                                                                    </div>
+                                                                    </div> -->
+                                                                    <div class="col-5">
+                                                                        <label class="mb-3" style='width:500px' for="appointment_status_id">Estado de la Cita</label>
+                                                                            <select name="appointment_status_id" class="form-control input-redondeado" required>
+                                                                                <option selected disabled value="">Seleccionar</option>
+                                                                                    @foreach($appointment_status as $Appointmentstatus)
+                                                                                        <option value="{{$Appointmentstatus->id}}"  {{$Appointmentstatus->id == $appointment->appointment_status_id  ? 'selected' : ''}} >
+                                                                                            {{$Appointmentstatus->state}} 
+                                                                                        </option>
+                                                                                    @endforeach
+                                                                            </select>
+                                                                    </div> 
 
                                                                     <div class="modal-footer">
                                                                         <button type="button" class="btn btn-outline-primary boton-estilo" data-dismiss="modal" style="background: rgba(92, 89, 89, 1); color:#ffffff;">Cancelar
@@ -167,7 +201,6 @@
                         </div>
                     </div>
                 </div>
-                {!! $appointments->links() !!}
             </div>
         </div>
     </div>
@@ -203,7 +236,7 @@
                                                 @enderror
                                             </div>
 
-                                            <div class="mb-3 mb-3-extra">
+                                            <!-- <div class="mb-3 mb-3-extra">
                                                 <label for="patient_id" class="col-form-label">id_paciente</label>
                                                 <input id="patient_id" type="text" value="{{ old('patient_id') }}" class="form-control input-redondeado @error('patient_id') is-invalid @enderror" name="patient_id"  autocomplete="off" autofocus>
                                                 @error('patient_id')
@@ -211,9 +244,20 @@
                                                         <strong>{{ $message }}</strong>
                                                     </span>
                                                 @enderror
+                                            </div> -->
+                                            <div class="col-5">
+                                                <label class="mb-3" style='width:500px' for="patient_id">Paciente</label>
+                                                <select name="patient_id" class="form-control input-redondeado" required>
+                                                <option selected disabled value="">Seleccionar</option>
+                                                    @foreach($patient as $Idpaciente)
+                                                        <option value="{{$Idpaciente->id}}"  >
+                                                            {{$Idpaciente->name}}</option>
+                                                    @endforeach
+                                                </select>
                                             </div>
 
-                                            <div class="mb-3 mb-3-extra">
+
+                                            <!-- <div class="mb-3 mb-3-extra">
                                                 <label for="doctor_id" class="col-form-label">id_doctor</label>
                                                 <input id="doctor_id" type="text" value="{{ old('doctor_id') }}" class="form-control input-redondeado @error('doctor_id') is-invalid @enderror" name="doctor_id"  autocomplete="off" autofocus>
                                                 @error('doctor_id')
@@ -221,9 +265,19 @@
                                                         <strong>{{ $message }}</strong>
                                                     </span>
                                                 @enderror
+                                            </div> -->
+                                            <div class="col-5">
+                                                <label class="mb-3" style='width:500px' for="doctor_id" >Doctor</label>
+                                                <select name="doctor_id" class="form-control input-redondeado" required>
+                                                <option selected disabled value="">Seleccionar</option>
+                                                    @foreach($doctor as $Iddoctor)
+                                                        <option value="{{$Iddoctor->id}}"  >
+                                                            {{$Iddoctor->name}}</option>
+                                                    @endforeach
+                                                </select>
                                             </div>
 
-                                            <div class="mb-3 mb-3-extra">
+                                            <!-- <div class="mb-3 mb-3-extra">
                                                 <label for="appointment_status_id" class="col-form-label">id_estado_cita</label>
                                                 <input id="appointment_status_id" type="text" value="{{ old('appointment_status_id') }}" class="form-control input-redondeado @error('appointment_status_id') is-invalid @enderror" name="appointment_status_id"  autocomplete="off" autofocus>
                                                 @error('appointment_status_id')
@@ -231,6 +285,16 @@
                                                         <strong>{{ $message }}</strong>
                                                     </span>
                                                 @enderror
+                                            </div> -->
+                                            <div class="col-5">
+                                                <label class="mb-3" style='width:500px' for="appointment_status_id" >Estado de la Cita</label>
+                                                <select name="appointment_status_id" class="form-control input-redondeado" required>
+                                                <option selected disabled value="">Seleccionar</option>
+                                                    @foreach($appointment_status as $Appointmentstatus)
+                                                        <option value="{{$Appointmentstatus->id}}"  >
+                                                            {{$Appointmentstatus->state}}</option>
+                                                    @endforeach
+                                                </select>
                                             </div>
 
 

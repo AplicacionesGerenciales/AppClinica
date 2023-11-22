@@ -20,6 +20,7 @@
                                 
                             
                             <!-- boton para llamar al modal create -->
+                            @can('crear-cita')
                             <div class="float-right">
                                 <a href="{{ route('appointments.create') }}" class="text white mr-2 mt-3 btn btn-primary" data-toggle="modal" data-target="#CreateModal">
                                     {{ __('Nuevo') }}
@@ -28,6 +29,7 @@
                                     </i>
                                 </a>
                             </div>
+                            @endcan
                             
                                 <a href="{{ url ('appointments.importExcel') }}" class="mr-2 mt-3 btn btn-primary" >Exportar
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="18" viewBox="0 0 16 18" fill="none">

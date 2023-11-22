@@ -20,7 +20,6 @@
         </div>
         <div class="col text-right">
 
-
             <a class="text-white mr-3 mt-3 btn btn-primary" data-toggle="modal" data-target="#CreateModal" data-modal-origin="create">Nuevo Mèdico
                 <i class="mr-2 fa-sharp fa-solid fa-plus"></i>
             </a> 
@@ -33,14 +32,14 @@
                                     <tr>
                                         <th>No</th>
                                         
-										<th>Name</th>
-										<th>Lastname</th>
-										<th>Phone</th>
-										<th>Identity Card</th>
-										<th>Gender</th>
-										<th>Inss</th>
-										<th>Specialty Id</th>
-										<th>User Id</th>
+										<th>Nombre</th>
+										<th>Apellido</th>
+										<th>Telefono</th>
+										<th>Càdula de identidad </th>
+										<th>Genero</th>
+										<th>INSS</th>
+										<th>Especialidad</th>
+										<th>Usuario</th>
                                         <th></th>
                                     </tr>
                                 </thead>
@@ -54,10 +53,25 @@
 											<td>{{ $doctor->identity_card }}</td>
 											<td>{{ $doctor->gender }}</td>
 											<td>{{ $doctor->inss }}</td>
-											<td>{{ $doctor->specialty_id }}</td>
-											<td>{{ $doctor->user_id }}</td>
-                                            <td>
+											<td>
+                                                @foreach ($especialidad as $especiali)
+                                                @if ($especiali->id === $doctor->specialty_id)
+                                                    {{ $especiali->specialty}}
+                                                @endif
+                                            @endforeach</td>
+                                            </td>
 
+											<td> 
+                                                @foreach ($users as $usuario) 
+                                                @if ($usuario->id === $doctor->user_id)
+                                                    {{ $usuario->name}}
+                                                @endif
+                                            @endforeach
+
+                                            </td>      
+
+                                            <td>
+                                
                                                 <div class="modal fade" id="UpdateModal{{$doctor->id}}" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="UpdateModalLabel" aria-hidden="true">
                                                     <div class="modal-dialog modal-lg">
                                                         <div class="modal-content">
@@ -111,11 +125,6 @@
                                                                                 <input type="text" id="inss" class="form-control input-redondeado" name="inss" value="{{ $doctor->inss }}">
                                                                             </div>
 
-
-                                                                            <div class="mb-3">
-                                                                                <label for="user_id" class="form-label">ID Usuario</label>
-                                                                                <input type="number" id="user_id" class="form-control input-redondeado" name="user_id" value="{{ $doctor->user_id }}">
-                                                                            </div>
                                                 
                                                                             <div class="mb-3">
                                                                                 <label for="especialidad_id" class="form-label">Especialidad</label>
@@ -227,10 +236,10 @@
                                             </div>
                 
     
-                                            <div class="mb-3">
+                                            {{-- <div class="mb-3">
                                                 <label for="user_id" class="form-label">ID Usuario</label>
                                                 <input type="number" id="user_id" class="form-control input-redondeado" name="user_id" value="{{ old('user_id') }}">
-                                            </div>
+                                            </div> --}}
                                            
                                             <div class="mb-3">
                                                 <label for="especialidad_id" class="form-label">Especialidad</label>

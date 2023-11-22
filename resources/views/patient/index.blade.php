@@ -129,7 +129,7 @@
     
                                                 <div class="mb-3 mb-3-copia mb-3-copia">
                                                     <label for="birthdate" class="col-form-label">Fecha de nacimiento</label>
-                                                    <input id="birthdate" type="text" value="{{$patient->birthdate}}" class="form-control input-redondeado @error('birthdate') is-invalid @enderror" name="birthdate">
+                                                    <input id="birthdate" type="date" value="{{$patient->birthdate}}" class="form-control input-redondeado @error('birthdate') is-invalid @enderror" name="birthdate">
                                                     @error('birthdate')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
@@ -143,7 +143,7 @@
                         <div class="modal-row  mb-3-contact mb-3-copia">
                             <div class="mb-3">
                                 <label for="phone" class="col-form-label">N° de telefono</label>
-                                <input id="phone" type="text" value="{{$patient->phone}}" class="form-control input-redondeado @error('phone') is-invalid @enderror" name="phone">
+                                <input id="phone" type="number" value="{{$patient->phone}}" class="form-control input-redondeado @error('phone') is-invalid @enderror" name="phone">
                                 @error('phone')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -154,7 +154,7 @@
                             <div>
                                 <div class="mb-3">
                                     <label for="address" class="col-form-label">Correo electrónico</label>
-                                    <input id="address" type="text" value="{{$patient->address}}" class="form-control input-redondeado input_phone @error('address') is-invalid @enderror" name="address">
+                                    <input id="address" type="email" value="{{$patient->address}}" class="form-control input-redondeado input_phone @error('address') is-invalid @enderror" name="address">
                                     @error('address')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -311,7 +311,7 @@
     
                                 <div class="mb-3 mb-3-copia">
                                     <label for="birthdate" class="col-form-label">Fecha de nacimiento</label>
-                                    <input id="birthdate" type="text" value="{{old('birthdate')}}" class="form-control input-redondeado @error('birthdate') is-invalid @enderror" name="birthdate">
+                                    <input id="birthdate" type="date" value="{{old('birthdate')}}" class="form-control input-redondeado @error('birthdate') is-invalid @enderror" name="birthdate">
                                     @error('birthdate')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -325,7 +325,7 @@
                         <div class="modal-row  mb-3-contact mb-3-copia">
                             <div class="mb-3">
                                 <label for="phone" class="col-form-label">N° de telefono</label>
-                                <input id="phone" type="text" value="{{old('phone')}}" class="form-control input-redondeado @error('phone') is-invalid @enderror" name="phone">
+                                <input id="phone" type="number" value="{{old('phone')}}" class="form-control input-redondeado @error('phone') is-invalid @enderror" name="phone">
                                 @error('phone')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -336,7 +336,7 @@
                             <div>
                                 <div class="mb-3 mb-3-copia">
                                     <label for="address" class="col-form-label">Correo electrónico</label>
-                                    <input id="address" type="text" value="{{old('address')}}" class="form-control input-redondeado input_phone @error('address') is-invalid @enderror" name="address">
+                                    <input id="address" type="email" value="{{old('address')}}" class="form-control input-redondeado input_phone @error('address') is-invalid @enderror" name="address">
                                     @error('address')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

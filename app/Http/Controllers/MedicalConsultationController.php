@@ -14,6 +14,14 @@ use Illuminate\Http\Request;
  */
 class MedicalConsultationController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('permission:ver-consulta-medica', ['only' => ['index']]);
+        $this->middleware('permission:crear-consulta-medica', ['only' => ['create','store']]);
+        $this->middleware('permission:editar-consulta-medica', ['only' => ['edit','update']]);
+        $this->middleware('permission:borrar-consulta-medica', ['only' => ['destroy']]);
+    }
+
     public function index()
     {
         $medicalConsultations = MedicalConsultation::paginate();

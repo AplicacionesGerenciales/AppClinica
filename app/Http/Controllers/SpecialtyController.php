@@ -11,6 +11,14 @@ use Illuminate\Http\Request;
  */
 class SpecialtyController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('permission:ver-especialidad', ['only' => ['index']]);
+        $this->middleware('permission:crear-especialidad', ['only' => ['create','store']]);
+        $this->middleware('permission:editar-especialidad', ['only' => ['edit','update']]);
+        $this->middleware('permission:borrar-especialidad', ['only' => ['destroy']]);
+    }
+
     public function index()
     {
         $specialties = Specialty::paginate();

@@ -18,6 +18,14 @@ use App\Exports\PatientsExport;
  */
 class PatientController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('permission:ver-paciente', ['only' => ['index']]);
+        $this->middleware('permission:crear-paciente', ['only' => ['create','store']]);
+        $this->middleware('permission:editar-paciente', ['only' => ['edit','update']]);
+        $this->middleware('permission:borrar-paciente', ['only' => ['destroy']]);
+    }
+
     public function index()
     {
         $patients = Patient::paginate();

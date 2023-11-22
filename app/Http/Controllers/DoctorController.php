@@ -21,6 +21,14 @@ use App\Models\Post;
  */
 class DoctorController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('permission:ver-doctor', ['only' => ['index']]);
+        $this->middleware('permission:crear-doctor', ['only' => ['create','store']]);
+        $this->middleware('permission:editar-doctor', ['only' => ['edit','update']]);
+        $this->middleware('permission:borrar-doctor', ['only' => ['destroy']]);
+    }
+    
     public function index()
     {
         $doctors = Doctor::paginate();

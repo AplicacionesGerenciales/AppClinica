@@ -12,6 +12,14 @@ use Illuminate\Http\Request;
  */
 class DiseaseController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('permission:ver-enfermedad', ['only' => ['index']]);
+        $this->middleware('permission:crear-enfermedad', ['only' => ['create','store']]);
+        $this->middleware('permission:editar-enfermedad', ['only' => ['edit','update']]);
+        $this->middleware('permission:borrar-enfermedad', ['only' => ['destroy']]);
+    }
+
     public function index()
     {
         $diseases = Disease::paginate();

@@ -11,6 +11,14 @@ use Illuminate\Http\Request;
  */
 class DiseaseGroupController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('permission:ver-grupo-enfermedad', ['only' => ['index']]);
+        $this->middleware('permission:crear-grupo-enfermedad', ['only' => ['create','store']]);
+        $this->middleware('permission:editar-grupo-enfermedad', ['only' => ['edit','update']]);
+        $this->middleware('permission:borrar-grupo-enfermedad', ['only' => ['destroy']]);
+    }
+
     public function index()
     {
         $diseaseGroups = DiseaseGroup::paginate();

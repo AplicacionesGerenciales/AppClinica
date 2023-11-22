@@ -11,6 +11,14 @@ use Illuminate\Http\Request;
  */
 class DoctorNotificationController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('permission:ver-notificacion-doctor', ['only' => ['index']]);
+        $this->middleware('permission:crear-notificacion-doctor', ['only' => ['create','store']]);
+        $this->middleware('permission:editar-notificacion-doctor', ['only' => ['edit','update']]);
+        $this->middleware('permission:borrar-notificacion-doctor', ['only' => ['destroy']]);
+    }
+
     public function index()
     {
         $doctorNotifications = DoctorNotification::paginate();

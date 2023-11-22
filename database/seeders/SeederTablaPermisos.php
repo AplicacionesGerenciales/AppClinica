@@ -30,11 +30,11 @@ class SeederTablaPermisos extends Seeder
             'editar-usuario',
             'borrar-usuario',
 
-            //Operaciones sobre tabla consultas
-            'ver-consulta',
-            'crear-consulta',
-            'editar-consulta',
-            'borrar-consulta',
+            //Operaciones sobre tabla estado citas
+            'ver-estado-cita',
+            'crear-estado-cita',
+            'editar-estado-cita',
+            'borrar-estado-cita',
 
             //Operaciones sobre tabla citas
             'ver-cita',
@@ -49,11 +49,18 @@ class SeederTablaPermisos extends Seeder
             'borrar-paciente',
 
             //Operaciones sobre tabla medicos
-            'ver-medico',
-            'crear-medico',
-            'editar-medico',
-            'borrar-medico',
+            'ver-doctor',
+            'crear-doctor',
+            'editar-doctor',
+            'borrar-doctor',
 
+            //Operaciones sobre tabla notificacion doctor
+            'ver-notificacion-doctor',
+            'crear-notificacion-doctor',
+            'editar-notificacion-doctor',
+            'borrar-notificacion-doctor',
+
+                        
             //Operaciones sobre tabla examenes
             'ver-examen',
             'crear-examen',
@@ -108,12 +115,17 @@ class SeederTablaPermisos extends Seeder
             'editar-tipo-examen',
             'borrar-tipo-examen',
 
-            //Operaciones sobre tabla tipo de medical consultation medicines
+            //Operaciones sobre tabla  de medical consultation 
             'ver-consulta-medica',
             'crear-consulta-medica',
             'editar-consulta-medica',
             'borrar-consulta-medica',
             
+            //Operaciones sobre tabla consultas medicas medicina
+            'ver-consulta-medica-medicina',
+            'crear-consulta-medica-medicina',
+            'editar-consulta-medica-medicina',
+            'borrar-consulta-medica-medicina'
             
 
         ];

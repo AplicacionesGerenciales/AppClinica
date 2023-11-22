@@ -12,6 +12,14 @@ use Illuminate\Http\Request;
  */
 class FileController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('permission:ver-expediente', ['only' => ['index']]);
+        $this->middleware('permission:crear-expediente', ['only' => ['create','store']]);
+        $this->middleware('permission:editar-expediente', ['only' => ['edit','update']]);
+        $this->middleware('permission:borrar-expediente', ['only' => ['destroy']]);
+    }
+
     public function index()
     {
         $files = File::paginate();

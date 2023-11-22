@@ -11,6 +11,14 @@ use Illuminate\Http\Request;
  */
 class StatusAppointmentController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('permission:ver-estado-cita', ['only' => ['index']]);
+        $this->middleware('permission:crear-estado-cita', ['only' => ['create','store']]);
+        $this->middleware('permission:editar-estado-cita', ['only' => ['edit','update']]);
+        $this->middleware('permission:borrar-estado-cita', ['only' => ['destroy']]);
+    }
+    
     public function index()
     {
         $statusAppointments = StatusAppointment::paginate();

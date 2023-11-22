@@ -44,7 +44,7 @@
 										<th>Doctor</th>
 										<th>Archivo</th>
 										<th>Enfermedad</th>
-										<th>Presioón Sanguínea</th>
+										<th>Presión Sanguínea</th>
 										<th>Temperatura</th>
 										<th>Peso</th>
                                         <th></th>
@@ -260,7 +260,7 @@
                         @enderror
                     </div>
                     <div class="mb-3">
-                        <label for="temperature" class="col-form-label">Temperatura</label>
+                        <label for="temperature" class="col-form-label">Temperatura (Grados Centigrados)</label>
                         <input id="temperature" type="text" class="form-control input-redondeado @error('temperature') is-invalid @enderror" name="temperature" value="{{ old('temperature') }}" autocomplete="off" autofocus>
                         @error('temperature')
                             <span class="invalid-feedback" role="alert">
@@ -269,7 +269,7 @@
                         @enderror
                     </div>
                     <div class="mb-3">
-                        <label for="weight" class="col-form-label">Peso</label>
+                        <label for="weight" class="col-form-label">Peso (Kilogramos)</label>
                         <input id="weight" type="text" class="form-control input-redondeado @error('weight') is-invalid @enderror" name="weight" value="{{ old('weight') }}" autocomplete="off" autofocus>
                         @error('weight')
                             <span class="invalid-feedback" role="alert">
@@ -281,7 +281,7 @@
                     <div class="col-5 mb-4">
                     <label class"mb-3" for='doctor_id' >Doctor</label>
                     <select name="doctor_id" class="form-control input-redondeado" required>
-                        <option selected disabled value="">Seleccionar</option>
+           {{--              <option selected disabled value="">"Seleccionar</option> --}}
                             @foreach ( $doctor as $doctors )
                                 <option value="{{ $doctors->id }}">
                                     {{ $doctors->name }}</option>

@@ -76,10 +76,13 @@
                                                                     <select name="patient_id" id="patient_id" class="form-control input-redondeado" required>
                                                                         <option value="" disabled>Seleccionar</option>
                                                                         @foreach($patients as $patient)
-                                                                            <option value="{{$patient->id}}" {{ $patient->id == $file->patient_id ? 'selected' : '' }}>{{$patient->name}}</option>
+                                                                            <option value="{{$patient->id}}" {{ $patient->id == $file->patient_id ? 'selected' : '' }}>{{$patient->name." -".$patient->identification_card}}</option>
                                                                         @endforeach
                                                                     </select>
                                                                 </div>
+                                                               
+
+
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancelar
                                                                         <i class="fa-solid fa-circle-xmark" style="color: #01499b;"></i>
@@ -161,7 +164,7 @@
                         <label for="patient_id" class="col-form-label">Nombre del paciente</label>
                         <select name="patient_id" id="patient_id" class="form-control input-redondeado" require><option value="" selected disabled>Seleccionar</option>
                             @foreach($patients as $patiente)
-                                <option value="{{$patiente->id}}">Nombre del paciente: {{$patiente->name}}</option>
+                                <option value="{{$patiente->id}}">Nombre del paciente: {{$patiente->name." -".$patiente->identification_card}}</option>
                             @endforeach
                         </select>  
                     </div>

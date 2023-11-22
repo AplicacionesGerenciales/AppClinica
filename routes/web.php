@@ -55,6 +55,8 @@ Route::post('/updatepassword', [App\Http\Controllers\PatientController::class, '
 // Route::get('/profiledoctor', [App\Http\Controllers\DoctorController::class, 'profiledoctor'])->name('Perfil');
 // Route::get('/NewPassword', [UserSettingsController::class,'NewPassword'])->name('Perfil')->middleware('auth');
 // Route::post('/change/password', [UserSettingsController::class,'changePassword'])->name('ChangePassword');
+
+Route::resource('dashboard', \App\Http\Controllers\DashboardController::class);
 //Route::get('appointments/{id}', 'ShowAppointmentController@show')->name('appointments.show');
 
 

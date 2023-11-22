@@ -1,6 +1,5 @@
 @extends('layouts.panel')
 
-
 @section('content')
 <div class="card shadow">
     <div class="row align-items-centery">
@@ -59,7 +58,7 @@
                                             </div>
                                             <div class="mb-3">
                                                 <label for="Description" class="col-form-label">Descripción</label>
-                                                <input id="Description" type="text" value="{{ $especialidades->description }}" class="form-control input-redondeado" name="description">
+                                                <input id="Description" type="text" value="{{ $especialidades->description }}"  class="form-control input-redondeado" name="description">
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancelar

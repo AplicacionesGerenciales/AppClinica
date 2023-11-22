@@ -4,16 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Models\Doctor;
 use App\Models\Specialty;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Events\PatienEvent;
 use App\Models\Patient;
 use App\Notifications\NotificationX;
-use App\Models\User;
 use PhpParser\Node\Expr\FuncCall;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Post;
-
-
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 /**
  * Class DoctorController
@@ -37,16 +37,26 @@ class DoctorController extends Controller
         return view('doctor.index', compact('doctors','especialidad'))->with('i', (request()->input('page', 1) - 1) * $doctors->perPage());
 
     }
-    public function create()
-    {
-        $doctor = new Doctor(); // Crear una instancia vacía del modelo Doctor o cargar datos predeterminados según tu lógica de negocio
-        return view('doctor.create', compact('doctor'));
-    }
 
     public function store(Request $request)
 {
-    $request->validate(Doctor::rules(null), Doctor::$messages);
-    Doctor::create($request->all());
+    try{
+        DB::transaction(function () use($request) {
+            $user = User::create([
+                'name' => $request['name'].$request['identity_card'],
+                'email' => $request['identity_card'].'@correo.ni',
+                'password' => Hash::make($request['identity_card']),
+
+            ]);
+            $request->request->add(['user_id' => $user->id]);
+            $request->validate(Doctor::rules(null), Doctor::$messages);
+            Doctor::create($request->all());
+        });
+    }
+    catch(\Throwable $th){
+        return redirect()->route('doctors.index')->with('mensaje', 'failCreate');
+    }
+     
     return redirect()->route('doctors.index')->with('mensaje', 'OkCreate');
 }
 

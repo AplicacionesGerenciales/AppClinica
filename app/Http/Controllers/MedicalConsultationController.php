@@ -8,6 +8,7 @@ use App\Models\Examination;
 use App\Models\File;
 use App\Models\MedicalConsultation;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * Class MedicalConsultationController
@@ -18,7 +19,10 @@ class MedicalConsultationController extends Controller
     public function index()
     {
         $medicalConsultations = MedicalConsultation::paginate();
-        $doctor = Doctor::all();
+        $IdAuthDoctor = Auth::Id();
+        $doctor = Doctor::Where('user_id', $IdAuthDoctor)->get();
+       /*  $doctor = Doctor::find($IdAuthDoctor); */
+        
         $file = File::all();
         $disease = Disease::all();
         $type_examination = TypeExamination::all();

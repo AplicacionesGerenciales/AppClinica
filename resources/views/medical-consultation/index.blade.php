@@ -11,22 +11,15 @@
                 <div class="card">
                     <div class="card-header">
                         <div style="display: flex; justify-content: space-between; align-items: center;">
-
                             <span id="card_title">
                                 {{ __('Consúlta Médica') }}
                             </span>
-
-                             {{-- <div class="float-right">
+                            {{-- <div class="float-right">
                                 <a href="{{ route('medical-consultations.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                  {{ __('Nueva Consulta') }}
+                                {{ __('Nueva Consulta') }}
                                 </a>
-                              </div> --}}
-                              <div class="col text-right">
-                                <a href="{{ url ('/Especialidad/create') }}" class="mr-2 mt-3 btn btn-primary" >Exportar
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="18" viewBox="0 0 16 18" fill="none">
-                                        <path d="M15.5 8.33376V16.3334C15.5 16.7754 15.3282 17.1993 15.0225 17.5119C14.7167 17.8244 14.302 18 13.8696 18H2.13043C1.69802 18 1.28331 17.8244 0.977543 17.5119C0.671777 17.1993 0.5 16.7754 0.5 16.3334V8.33376C0.5 7.89175 0.671777 7.46784 0.977543 7.1553C1.28331 6.84275 1.69802 6.66716 2.13043 6.66716H4.08696C4.34641 6.66716 4.59523 6.77252 4.77869 6.96004C4.96215 7.14757 5.06522 7.40191 5.06522 7.66712C5.06522 7.93232 4.96215 8.18667 4.77869 8.3742C4.59523 8.56172 4.34641 8.66708 4.08696 8.66708H2.45652V16.0001H13.5435V8.66708H11.913C11.6536 8.66708 11.4048 8.56172 11.2213 8.3742C11.0379 8.18667 10.9348 7.93232 10.9348 7.66712C10.9348 7.40191 11.0379 7.14757 11.2213 6.96004C11.4048 6.77252 11.6536 6.66716 11.913 6.66716H13.8696C14.302 6.66716 14.7167 6.84275 15.0225 7.1553C15.3282 7.46784 15.5 7.89175 15.5 8.33376ZM5.43125 5.0414L7.02174 3.41731V10.3337C7.02174 10.5989 7.12481 10.8532 7.30827 11.0407C7.49172 11.2283 7.74055 11.3336 8 11.3336C8.25945 11.3336 8.50828 11.2283 8.69173 11.0407C8.87519 10.8532 8.97826 10.5989 8.97826 10.3337V3.41731L10.5688 5.0439C10.6597 5.13692 10.7678 5.2107 10.8867 5.26104C11.0056 5.31138 11.133 5.33729 11.2617 5.33729C11.3904 5.33729 11.5178 5.31138 11.6367 5.26104C11.7556 5.2107 11.8636 5.13692 11.9546 5.0439C12.0456 4.95088 12.1178 4.84046 12.167 4.71893C12.2163 4.5974 12.2416 4.46714 12.2416 4.3356C12.2416 4.20405 12.2163 4.0738 12.167 3.95227C12.1178 3.83074 12.0456 3.72031 11.9546 3.6273L8.69375 0.294109C8.60287 0.200886 8.49487 0.126919 8.37596 0.0764496C8.25705 0.0259798 8.12957 0 8.00081 0C7.87206 0 7.74458 0.0259798 7.62567 0.0764496C7.50676 0.126919 7.39876 0.200886 7.30788 0.294109L4.04701 3.6273C3.95601 3.72031 3.88383 3.83074 3.83458 3.95227C3.78534 4.0738 3.75999 4.20405 3.75999 4.3356C3.75999 4.60126 3.86323 4.85605 4.04701 5.0439C4.23079 5.23175 4.48005 5.33729 4.73995 5.33729C4.99985 5.33729 5.2491 5.23175 5.43288 5.0439L5.43125 5.0414Z" fill="white"/>
-                                    </svg>
-                                </a>
+                            </div> --}}
+                            <div class="col text-right">
                                 <a class="text-white mr-3 mt-3 btn btn-primary" data-toggle="modal" data-target="#CreateModal" data-modal-origin="create">Nuevo
                                     <i class="mr-2 fa-sharp fa-solid fa-plus"></i>
                                 </a>
@@ -38,7 +31,6 @@
                             <p>{{ $message }}</p>
                         </div>
                     @endif
-
                     <div class="card-body">
                         <div class="table-responsive">
                             <table  id="datatable" class="table table-striped table-hover">
@@ -55,7 +47,6 @@
 										<th>Presioón Sanguínea</th>
 										<th>Temperatura</th>
 										<th>Peso</th>
-
                                         <th></th>
                                     </tr>
                                 </thead>
@@ -76,10 +67,8 @@
 
                                             <td>
                                                 <form action="{{ route('medical-consultations.destroy',$medicalConsultation->id) }}" method="POST">
-                                                   {{--  <a class="btn btn-sm btn-primary " href="{{ route('medical-consultations.show',$medicalConsultation->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Show') }}</a> --}}  {{--Botón de "Show" -}}
-                                                   {{--  <a class="btn btn-sm btn-success" href="{{ route('medical-consultations.edit',$medicalConsultation->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Edit') }}</a> --}}
-                                                  
-
+                                                {{--  <a class="btn btn-sm btn-primary " href="{{ route('medical-consultations.show',$medicalConsultation->id) }}"><i class="fa fa-fw fa-eye"></i> {{ __('Show') }}</a> --}}  {{--Botón de "Show" -}}
+                                                {{--  <a class="btn btn-sm btn-success" href="{{ route('medical-consultations.edit',$medicalConsultation->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Edit') }}</a> --}}
                                                     <a class = "btn btn-sm" data-toggle="modal" data-target="#UpdateModal{{$medicalConsultation->id}}" style="background-color:#01499B; color:white;">Editar
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="15" height="20" viewBox="0 0 20 27" fill="none">
                                                             <path d="M19.5313 4.93682L15.0624 0.468764C14.9139 0.32015 14.7375 0.202261 14.5433 0.121829C14.3492 0.0413978 14.1411 0 13.931 0C13.7208 0 13.5128 0.0413978 13.3186 0.121829C13.1245 0.202261 12.9481 0.32015 12.7995 0.468764L0.46899 12.7999C0.319775 12.948 0.201474 13.1242 0.120963 13.3183C0.0404513 13.5125 -0.000663414 13.7207 8.09464e-06 13.9309V18.4C8.09464e-06 18.8243 0.168573 19.2313 0.468619 19.5314C0.768666 19.8314 1.17562 20 1.59995 20H18.3993C18.6115 20 18.8149 19.9157 18.965 19.7657C19.115 19.6157 19.1993 19.4122 19.1993 19.2C19.1993 18.9878 19.115 18.7843 18.965 18.6343C18.8149 18.4843 18.6115 18.4 18.3993 18.4H8.33169L19.5313 7.19985C19.6799 7.05126 19.7978 6.87486 19.8782 6.68072C19.9586 6.48657 20 6.27848 20 6.06833C20 5.85818 19.9586 5.65009 19.8782 5.45595C19.7978 5.2618 19.6799 5.0854 19.5313 4.93682ZM15.9994 8.46886L11.5316 3.99981L13.9315 1.59978L18.3993 6.06883L15.9994 8.46886Z" fill="#F6F0EB"/>
@@ -91,7 +80,6 @@
                                                     @method('DELETE')
                                                    
                                                 </form>
-                                               
                                                 <div class="modal fade" id="UpdateModal{{$medicalConsultation->id}}" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="UpdateModalLabel" aria-hidden="true">
                                                     <div class="modal-dialog">
                                                         <div class="modal-content">
@@ -103,18 +91,16 @@
                                                                 <form action ="{{ route ('medical-consultations.update', $medicalConsultation->id )}}" method = "post">
                                                                     @csrf
                                                                     @method('PUT')
-
                                                                     <div class="mb-3">
-                                                                     <label for="diagnostic" class="col-form-label">Diagnóstico</label>
-                                                                       <input id="diagnostic" type="text" value="{{ $medicalConsultation->diagnostic }}" class="form-control input-redondeado @error('diagnostic') is-invalid @enderror" name="diagnostic" value="{{old ('diagnostic') }}" autocomplete="off" autofocus>
+                                                                        <label for="diagnostic" class="col-form-label">Diagnóstico</label>
+                                                                        <input id="diagnostic" type="text" value="{{ $medicalConsultation->diagnostic }}" class="form-control input-redondeado @error('diagnostic') is-invalid @enderror" name="diagnostic" value="{{old ('diagnostic') }}" autocomplete="off" autofocus>
                                                                         @error('diagnostic')
                                                                             <span class="invalid-feedback" role="alert">
                                                                                 <strong>{{ $message }}</strong>
                                                                             </span>
                                                                         @enderror
-                                                                     </div>
-
-                                                                     <div class="mb-3">
+                                                                    </div>
+                                                                    <div class="mb-3">
                                                                         <label for="symptoms" class="col-form-label">Síntomas</label>
                                                                         <input id="symptoms" type="text" value="{{ $medicalConsultation->symptoms }}" class="form-control input-redondeado @error('symptoms') is-invalid @enderror" name="symptoms" value="{{old ('symptoms') }}" autocomplete="off" autofocus>
                                                                         @error('symptoms')
@@ -123,7 +109,6 @@
                                                                             </span>
                                                                         @enderror
                                                                     </div>
-
                                                                     <div class="mb-3">
                                                                         <label for="blood_pressure" class="col-form-label">Presión Sanguínea</label>
                                                                         <input id="blood_pressure" type="text" value="{{ $medicalConsultation->blood_pressure }}" class="form-control input-redondeado @error('blood_pressure') is-invalid @enderror" name="blood_pressure" value="{{old ('blood_pressure') }}" autocomplete="off" autofocus>
@@ -133,7 +118,6 @@
                                                                             </span>
                                                                         @enderror
                                                                     </div>
-                                                
                                                                     <div class="mb-3">
                                                                         <label for="temperature" class="col-form-label">Temperatura</label>
                                                                         <input id="temperature" type="text" value="{{ $medicalConsultation->temperature }}" class="form-control input-redondeado @error('temperature') is-invalid @enderror" name="temperature" value="{{ old('temperature') }}" autocomplete="off" autofocus>
@@ -143,7 +127,6 @@
                                                                             </span>
                                                                         @enderror
                                                                     </div>
-                                                
                                                                     <div class="mb-3">
                                                                         <label for="weight" class="col-form-label">Peso</label>
                                                                         <input id="weight" type="text" value="{{ $medicalConsultation->weight }}" class="form-control input-redondeado @error('weight') is-invalid @enderror" name="weight" value="{{ old('weight') }}" autocomplete="off" autofocus>
@@ -153,8 +136,7 @@
                                                                             </span>
                                                                         @enderror
                                                                     </div>
-                                                                    
-                                                                   {{--  <div class="mb-3">
+                                                                    {{--  <div class="mb-3">
                                                                         <label for="doctor_id" class="col-form-label">ID del Doctor</label>
                                                                         <input id="doctor_id" type="text" class="form-control input-redondeado @error('doctor_id') is-invalid @enderror" name="doctor_id" value="{{ old('doctor_id') }}" autocomplete="off" autofocus>
                                                                         @error('doctor_id')
@@ -163,7 +145,6 @@
                                                                             </span>
                                                                         @enderror
                                                                     </div> --}}
-
                                                                     <div class="col-5">
                                                                         <label class="mb-3" style='width:500px' for="doctor_id" >Doctor</label>
                                                                             <select name="doctor_id" class="form-control input-redondeado" required>
@@ -175,21 +156,19 @@
                                                                                 @endforeach
                                                                                 
                                                                             </select>
-                                                                    </div>
-                                                                    
-                                                                     <div class="col-5 mb-4">
-                                                                      <label class="mb-3" style='width:500px' for="file_id" >File</label>
-                                                                       <select name="file_id" class="form-control input-redondeado" required>
+                                                                    </div>
+                                                                    <div class="col-5 mb-4">
+                                                                        <label class="mb-3" style='width:500px' for="file_id" >File</label>
+                                                                        <select name="file_id" class="form-control input-redondeado" required>
                                                                         <option value=" {{ $medicalConsultation->file_id }}" selected>{{ $medicalConsultation->file->file_number }} </option>   
-                                                                         @foreach($file as $files)
+                                                                            @foreach($file as $files)
                                                                             <option value="{{$files->id}}" >
-                                                                                 {{$files->file_number}}
+                                                                                {{$files->file_number}}
                                                                             </option>
-                                                                         @endforeach
+                                                                            @endforeach
                                                                         </select>
-                                                                     </div>
-                                                                    
-                                                                     <div class="col-5 mb-4">
+                                                                    </div>
+                                                                    <div class="col-5 mb-4">
                                                                         <label class="mb-3" style='width:500px' for="disease_id" >Enfermedad</label>
                                                                         <select name="disease_id" class="form-control input-redondeado" required>
                                                                             <option value=" {{ $medicalConsultation->disease_id }}" selected>{{ $medicalConsultation->disease->name }} </option>   
@@ -200,8 +179,16 @@
                                                                             @endforeach
                                                                         </select>
                                                                     </div>
-                                                                    
-                                                
+                                                                    <div class="col-5">
+                                                                        <label class="mb-3" style='width:500px' for="type_examination_id" >Tipo de examen</label>
+                                                                            <select name="type_examination_id" class="form-control input-redondeado" required>
+                                                                            <option selected disabled value="">Seleccionar</option>
+                                                                                @foreach($type_examination as $Tipodeexamen)
+                                                                                    <option value="{{$Tipodeexamen->id}}" >
+                                                                                        {{$Tipodeexamen->name}}</option {{$Tipodeexamen->id == $medicalConsultation->type_examination_id ? 'selected' : ''}} >
+                                                                                @endforeach
+                                                                            </select>
+                                                                    </div>
                                                                     <div class="mb-3">
                                                                         <label for="date" class="col-form-label">Fecha</label>
                                                                         <input id="date" type="text" value="{{ $medicalConsultation->date }}" class="form-control input-redondeado @error('date') is-invalid @enderror" name="date" value="{{ old('date') }}" autocomplete="off" autofocus>
@@ -211,7 +198,6 @@
                                                                             </span>
                                                                         @enderror
                                                                     </div>
-                                                                    
                                                                     <div class="modal-footer">
                                                                         <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancelar
                                                                             <i class="fa-solid fa-circle-xmark" style="color: #01499b;"></i>                        
@@ -224,7 +210,6 @@
                                                         </div>
                                                     </div>
                                                 </div>
-
                                             </td>
                                         </tr>
                                     @endforeach
@@ -237,8 +222,6 @@
             </div>
         </div>
     </div>
-
-
 <!-- Modal crear -->
 <div class="modal fade" id="CreateModal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="CreateModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl">
@@ -249,7 +232,6 @@
             <div class="modal-body">
                 <form action ="{{ route('medical-consultations.store') }}" method = "POST" enctype="multipart/form-data">
                 {{@csrf_field()}}
-
                     <div class="mb-3">
                         <label for="diagnostic" class="col-form-label">Diagnóstico</label>
                         <input id="diagnostic" type="text" class="form-control input-redondeado @error('diagnostic') is-invalid @enderror" name="diagnostic" value="{{old ('diagnostic') }}" autocomplete="off" autofocus>
@@ -259,7 +241,6 @@
                             </span>
                         @enderror
                     </div>
-
                     <div class="mb-3">
                         <label for="symptoms" class="col-form-label">Síntomas</label>
                         <input id="symptoms" type="text" class="form-control input-redondeado @error('symptoms') is-invalid @enderror" name="symptoms" value="{{old ('symptoms') }}" autocomplete="off" autofocus>
@@ -269,7 +250,6 @@
                             </span>
                         @enderror
                     </div>
-
                     <div class="mb-3">
                         <label for="blood_pressure" class="col-form-label">Presión Sanguínea</label>
                         <input id="blood_pressure" type="text" class="form-control input-redondeado @error('blood_pressure') is-invalid @enderror" name="blood_pressure" value="{{old ('blood_pressure') }}" autocomplete="off" autofocus>
@@ -279,7 +259,6 @@
                             </span>
                         @enderror
                     </div>
-
                     <div class="mb-3">
                         <label for="temperature" class="col-form-label">Temperatura</label>
                         <input id="temperature" type="text" class="form-control input-redondeado @error('temperature') is-invalid @enderror" name="temperature" value="{{ old('temperature') }}" autocomplete="off" autofocus>
@@ -289,7 +268,6 @@
                             </span>
                         @enderror
                     </div>
-
                     <div class="mb-3">
                         <label for="weight" class="col-form-label">Peso</label>
                         <input id="weight" type="text" class="form-control input-redondeado @error('weight') is-invalid @enderror" name="weight" value="{{ old('weight') }}" autocomplete="off" autofocus>
@@ -300,19 +278,17 @@
                         @enderror
                     </div>
                     
-                   <div class="col-5 mb-4">
+                    <div class="col-5 mb-4">
                     <label class"mb-3" for='doctor_id' >Doctor</label>
                     <select name="doctor_id" class="form-control input-redondeado" required>
                         <option selected disabled value="">Seleccionar</option>
-                             @foreach ( $doctor as $doctors )
-                                 <option value="{{ $doctors->id }}">
+                            @foreach ( $doctor as $doctors )
+                                <option value="{{ $doctors->id }}">
                                     {{ $doctors->name }}</option>
-                             @endforeach
+                            @endforeach
                     </select>
-                   </div>
-                       
-                    
-                   <div class="col-5 mb-4">
+                    </div>
+                    <div class="col-5 mb-4">
                     <label class="mb-3" for='file_id' >Archivo</label>
                     <select name="file_id" class="form-control input-redondeado" required>
                         <option selected disabled value="">Seleccionar</option>
@@ -323,8 +299,6 @@
                         @endforeach
                     </select>
                     </div>
-                
-                    
                     <div class="col-5 mb-4">
                         <label class="mb-3" for='disease_id' >Enfermedad</label>
                         <select name="disease_id" class="form-control input-redondeado" required>
@@ -336,19 +310,36 @@
                             @endforeach
                         </select>
                     </div>
-
+                    <div class="col-5">
+                        <label class="mb-3" style='width:500px' for="type_examination_id" >Tipo de examen</label>
+                            <select name="type_examination_id" id="type_examination_id" onchange="showInp()"  class="form-control input-redondeado" required>
+                            <option selected disabled value="">Seleccionar</option>
+                            <option value="Ninguno">Ninguno</option>
+                                @foreach($type_examination as $Tipodeexamen)
+                                    <option value="{{$Tipodeexamen->id}}" >
+                                        {{$Tipodeexamen->name}}</option>
+                                @endforeach
+                            </select>
+                    </div>
+                    <div class="mb-3" style="display: none" id="result">
+                    <label for="result" class="col-form-label" id="labelresult">Resultado</label>
+                        <input  type="text"  class="form-control input-redondeado @error('result') is-invalid @enderror" name="result"  autocomplete="off" autofocus>
+                        @error('result')
+                            <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                    </div>
                     <div class="mb-3">
                         <label for="date" class="col-form-label">Fecha</label>
-                        <input id="date" type="text" class="form-control input-redondeado @error('date') is-invalid @enderror" name="date" value="{{ old('date') }}" autocomplete="off" autofocus>
+                        <input id="date" type="date" class="form-control input-redondeado @error('date') is-invalid @enderror" name="date" value="{{ old('date') }}" autocomplete="off" autofocus>
                         @error('date')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror
                     </div>
-                    
-                    
-
                     <div class="modal-footer">
                         <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancelar
                             <i class="fa-solid fa-circle-xmark" style="color: #01499b;"></i>                        
@@ -411,5 +402,21 @@
 @if (session('mensaje') == 'OkUpdate')
     @include('includes.alerts.edit')  
 @endif
+
+<script>
+    
+    function showInp(){
+        var getSelectValue = document.getElementById("type_examination_id").value;
+        console.log(getSelectValue);
+            if(getSelectValue != "Ninguno"){
+                document.getElementById("result").style.display = "inline-block";
+            }
+            if(getSelectValue == "Ninguno")
+            {
+                document.getElementById("result").style.display = "none";
+    }
+}
+</script>
+
 
 @endsection

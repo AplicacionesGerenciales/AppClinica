@@ -125,7 +125,12 @@
                                                                                 <input type="text" id="inss" class="form-control input-redondeado" name="inss" value="{{ $doctor->inss }}">
                                                                             </div>
 
-                                                
+                                                                            
+                                                                            <div class="mb-3">
+                                                                                
+                                                                                <input type="text" id="user_id" class="form-control input-redondeado" name="user_id" value="{{ $doctor->user_id}}" hidden>
+                                                                            </div>   
+                                                                                                                                         
                                                                             <div class="mb-3">
                                                                                 <label for="especialidad_id" class="form-label">Especialidad</label>
                                                                                 <select id="especialidad_id" name="specialty_id" class="form-select">

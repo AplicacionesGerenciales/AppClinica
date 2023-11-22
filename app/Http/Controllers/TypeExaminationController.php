@@ -28,18 +28,18 @@ class TypeExaminationController extends Controller
     {
         request()->validate(TypeExamination::$rules, TypeExamination::$messages);
         TypeExamination::create($request->all());
-        return redirect()->route('type-examinations.index')->with('success', 'TypeExamination created successfully.');
+        return redirect()->route('type-examinations.index')->with('mensaje', 'OkCreate');
     }
     public function update(Request $request, $id)
     {
         request()->validate(TypeExamination::$rules, TypeExamination::$messages);
         $TypeExamination = request()->except('_token', '_method');
         TypeExamination::where('id', $id)->update($TypeExamination);
-        return redirect()->route('type-examinations.index')->with('success', 'TypeExamination updated successfully');
+        return redirect()->route('type-examinations.index')->with('mensaje', 'OkUpdate');
     }
     public function destroy($id)
     {
         TypeExamination::find($id)->delete();
-        return redirect()->route('type-examinations.index')->with('success', 'TypeExamination deleted successfully');
+        return redirect()->route('type-examinations.index')->with('mensaje', 'OkDelete');
     }
 }

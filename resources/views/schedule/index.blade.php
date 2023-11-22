@@ -44,12 +44,11 @@
                                     <tr>
                                         <th>No</th>
                                         
-										<th>Day</th>
-										<th>Start Time</th>
-										<th>Departure Time</th>
-										<th>Shift</th>
-										<th>Doctor Id</th>
-
+										<th>Día</th>
+										<th>Hora de inicio</th>
+										<th>Hora de salida</th>
+										<th>Turno</th>
+										<th>Doctor</th>
                                         <th></th>
                                     </tr>
                                 </thead>

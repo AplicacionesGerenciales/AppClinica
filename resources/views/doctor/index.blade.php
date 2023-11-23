@@ -22,7 +22,7 @@
           
             @can('crear-doctor')
 
-            <a class="text-white mr-3 mt-3 btn btn-primary" data-toggle="modal" data-target="#CreateModal" data-modal-origin="create">Nuevo Mèdico
+            <a class="text-white mr-3 mt-3 btn btn-primary" data-toggle="modal" data-target="#CreateModal" data-modal-origin="create">Nuevo Médico
                 <i class="mr-2 fa-sharp fa-solid fa-plus"></i>
             </a> 
             @endcan

@@ -72,6 +72,9 @@ class PatientController extends Controller
     }
     public function update(Request $request, $id)
     {
+        $request->merge([
+            'user_id' => auth()->id(),
+        ]);
         request()->validate(Patient::$rules, Patient::$messages);
         $Patient = request()->except('_token', '_method');
         Patient::where('id', $id)->update($Patient);

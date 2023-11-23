@@ -11,7 +11,8 @@ use App\Notifications\NotificationX;
 use App\Models\User;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\PatientsExport;
-
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 /**
  * Class PatientController
  * @package App\Http\Controllers
@@ -58,26 +59,22 @@ class PatientController extends Controller
 
     public function store(Request $request)
     {
-        $request->merge([
-            'user_id' => auth()->id(),
-        ]);
-
-        request()->validate(Patient::$rules, Patient::$messages); 
-        Patient::create($request->all()); 
-
-        //esto lo que hace es enviar la notificion al mismo que crea es decir al el mismo
-        //auth()->user()->notify(new NotificationX($patient));
-
-        //ahora si enviara la notificacion a otros menos a el
-        // User::all()
-        // ->except($request->id)
-        // ->each(function(User $user) use ($patient){
-        //     $user->notify(new NotificationX($patient));
-        // });
-
-        //event(new PatienEvent($patient));
-
-
+        try{
+            DB::transaction(function () use($request) {
+                $user = User::create([
+                    'name' => $request['name'].$request['identification_card'],
+                    'email' => $request['address'],
+                    'password' => Hash::make($request['identification_card']),
+                ]);
+                $user->assignRole(2);
+                $request->request->add(['user_id' => $user->id]);
+                request()->validate(Patient::$rules, Patient::$messages); 
+                Patient::create($request->all()); 
+            });
+        }
+        catch(\Throwable $th){
+            return redirect()->route('patients.index')->with('mensaje', 'failCreate');
+        }
         return redirect()->route('patients.index')->with('mensaje', 'OkCreate');
     }
     public function update(Request $request, $id)

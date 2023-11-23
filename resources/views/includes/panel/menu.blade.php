@@ -1,17 +1,22 @@
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
     <ul class="nav">
+        @can('ver-dashboard')
         <li class="nav-item">
             <a class="nav-link" href="{{ route('dashboard.index') }}">
                 <i class="fa-solid fa-chart-line text-danger menu-icon"></i>
                 <span class="menu-title">Dashboard</span>
             </a>
         </li>
+        @endcan
+       
         <li class="nav-item">
+             @can('ver-agenda')
             <a class="nav-link" data-toggle="collapse" href="#Agenda" aria-expanded="false" aria-controls="Agenda">
                 <i class="fa-solid fa-calendar-days text-warning menu-icon"></i>
                     <span class="menu-title">Agenda</span>
                 <i class="menu-arrow"></i>
             </a>
+            @endcan
             <div class="collapse" id="Agenda">
                 <ul class="nav flex-column sub-menu">
                     @can('ver-consulta-medica')
@@ -26,11 +31,13 @@
             </div>
         </li>
         <li class="nav-item">
+            @can('ver-gestion')
             <a class="nav-link" data-toggle="collapse" href="#Gestion" aria-expanded="false" aria-controls="Gestion">
             <i class="fa-solid fa-bars-progress text-success menu-icon"></i>
                 <span class="menu-title">Gestion</span>
                 <i class="menu-arrow"></i>
             </a>
+            @endcan
             <div class="collapse" id="Gestion">
                 <ul class="nav flex-column sub-menu">
                     @can('ver-paciente')
@@ -59,11 +66,13 @@
             </div>
         </li>
         <li class="nav-item">
+            @can('ver-administracion')
             <a class="nav-link" data-toggle="collapse" href="#Administracion" aria-expanded="false" aria-controls="Administracion">
                 <i class="icon-bar-graph text-info menu-icon"></i>
                     <span class="menu-title">Administracion</span>
                 <i class="menu-arrow"></i>
             </a>
+            @endcan
             <div class="collapse" id="Administracion">
                 <ul class="nav flex-column sub-menu">
                     @can('ver-antecedente')

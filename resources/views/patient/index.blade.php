@@ -29,7 +29,7 @@
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table id="datatable" class="table is-striped" style="width:130%">
+                            <table id="datatable" class="table is-striped" style="width:150%">
                                 <thead class=" thead-light">
                                     <tr>
                                         <th scope="col" class="color-text">No</th>
@@ -40,7 +40,7 @@
 										<th scope="col" class="color-text">Nacimiento</th>
 										<th scope="col" class="color-text">Telefono</th>
 										<th scope="col" class="color-text">Correo Electronico</th>
-										<th scope="col" class="color-text" style="width: 30%">Acciones</th>
+										<th scope="col" class="color-text" style="width: 50%">Acciones</th>
                                         
                                     </tr>
                                 </thead>
@@ -135,7 +135,6 @@
                                                                             </span>
                                                                         @enderror
                                                                         </div>
-                                                                        <div>
                                                                             <div class="mb-3">
                                                                                 <label for="address" class="col-form-label">Correo electrónico</label>
                                                                                 <input id="address" type="email" value="{{$patient->address}}" class="form-control input-redondeado input_phone @error('address') is-invalid @enderror" name="address">
@@ -145,7 +144,15 @@
                                                                                 </span>
                                                                             @enderror
                                                                             </div>
-                                                                        </div>
+                                                                            <div class="mb-3 d-none">
+                                                                                <label for="user_id" class="col-form-label">Correo electrónico</label>
+                                                                                <input id="user_id" type="text" value="{{$patient->user_id}}" class="form-control input-redondeado input_phone @error('user_id') is-invalid @enderror" name="user_id">
+                                                                                @error('user_id')
+                                                                                <span class="invalid-feedback" role="alert">
+                                                                                    <strong>{{ $message }}</strong>
+                                                                                </span>
+                                                                            @enderror
+                                                                            </div>
                                                                     </div>
                                                                     <div class="modal-footer">
                                                                         <button type="button" id="btn-style" class="btn btn-outline-primary" data-dismiss="modal" style="background: rgba(92, 89, 89, 1); color:#ffffff;">Cancelar
@@ -163,7 +170,7 @@
                                             <!-- End Modal editar-->
                                             <form class="Form-Delete" action="{{ route('patients.destroy',$patient->id) }}" method="POST">
                                                 <a class="btn btn-sm btn-primary" id="btn-edit" data-toggle="modal" data-target="#CreateModalPosts{{$patient->id}}" data-modal-origin="create">{{ __('Enviar notificacion') }}</a>
-                                                <a class="btn btn-sm btn-success " id="btn-edit" data-toggle="modal" data-target="#UpdateModal{{$patient->id}}">{{ __('Edit') }}</a>
+                                                <a class="btn btn-sm btn-success " id="btn-edit" data-toggle="modal" data-target="#UpdateModal{{$patient->id}}">{{ __('Editar') }}</a>
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" id="btn-edit" class="btn btn-danger btn-sm">{{ __('Eliminar') }}</button>

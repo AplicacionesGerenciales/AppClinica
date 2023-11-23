@@ -12,6 +12,13 @@ use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('permission:ver-dashboard', ['only' => ['index']]);
+
+    }
+
+
     public function index()
     {
         $Users = User::count();

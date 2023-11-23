@@ -17,12 +17,12 @@ class DoctorController extends Controller
 {
     public function index()
     {
-        $doctors = Doctor::paginate();
+        $doctors = Doctor::paginate(); 
         $especialidad = Specialty::all();
         $users= User::all();
         return view('doctor.index', compact('doctors','especialidad','users'))->with('i', (request()->input('page', 1) - 1) * $doctors->perPage());
     }
-
+   
     public function store(Request $request)
 {
     try{
@@ -34,17 +34,17 @@ class DoctorController extends Controller
 
             ]);
             $request->request->add(['user_id' => $user->id]);
-            $request->validate(Doctor::rules(null), Doctor::$messages);
+            $request->validate(Doctor::rules($user->id), Doctor::$messages);
             Doctor::create($request->all());
         });
     }
     catch(\Throwable $th){
-        return redirect()->route('doctors.index')->with('mensaje', 'failCreate');
+        return redirect()->route('doctors.index')->with('mensaje', 'FailCreate');
     }
      
     return redirect()->route('doctors.index')->with('mensaje', 'OkCreate');
-}
 
+}
 
 
 public function update(Request $request, $id)
@@ -52,6 +52,7 @@ public function update(Request $request, $id)
     $rules = Doctor::rules($id);
     request()->validate($rules, Doctor::$messages);
     $Doctor = request()->except('_token', '_method');
+    
     Doctor::where('id', $id)->update($Doctor);
     return redirect()->route('doctors.index')->with('mensaje', 'OkUpdate');
 }

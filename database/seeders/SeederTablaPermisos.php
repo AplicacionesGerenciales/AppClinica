@@ -125,8 +125,13 @@ class SeederTablaPermisos extends Seeder
             'ver-consulta-medica-medicina',
             'crear-consulta-medica-medicina',
             'editar-consulta-medica-medicina',
-            'borrar-consulta-medica-medicina'
+            'borrar-consulta-medica-medicina',
             
+             //operaciones para elmenu
+             'ver-dashboard',
+             'ver-agenda',
+             'ver-gestion',
+             'ver-administracion'
 
         ];
 

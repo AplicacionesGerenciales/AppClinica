@@ -538,5 +538,72 @@ class RolesConPermisosTableSeeder extends Seeder
         ]);
 
         //permisos Supervisor
+        DB::table('role_has_permissions')->insert([
+            'permission_id' => '73',
+            'role_id' => '5'
+        ]);
+
+
+        //permisos para admin 2.0
+        DB::table('role_has_permissions')->insert([
+            'permission_id' => '74',
+            'role_id' => '1'
+        ]);
+
+        DB::table('role_has_permissions')->insert([
+            'permission_id' => '75',
+            'role_id' => '1'
+        ]);
+
+        DB::table('role_has_permissions')->insert([
+            'permission_id' => '76',
+            'role_id' => '1'
+        ]);
+
+        DB::table('role_has_permissions')->insert([
+            'permission_id' => '73',
+            'role_id' => '1'
+        ]);
+
+        //permisos para doctor 2.0
+
+        DB::table('role_has_permissions')->insert([
+            'permission_id' => '74',
+            'role_id' => '3'
+        ]);
+
+        DB::table('role_has_permissions')->insert([
+            'permission_id' => '75',
+            'role_id' => '3'
+        ]);
+
+        DB::table('role_has_permissions')->insert([
+            'permission_id' => '76',
+            'role_id' => '3'
+        ]);
+
+        //permisos para paciente 2.0
+
+        DB::table('role_has_permissions')->insert([
+            'permission_id' => '74',
+            'role_id' => '2'
+        ]);
+
+        //permisos para recepcionista
+
+        DB::table('role_has_permissions')->insert([
+            'permission_id' => '74',
+            'role_id' => '4'
+        ]);
+
+        DB::table('role_has_permissions')->insert([
+            'permission_id' => '75',
+            'role_id' => '4'
+        ]);
+
+        DB::table('role_has_permissions')->insert([
+            'permission_id' => '76',
+            'role_id' => '4'
+        ]);
     }
 }

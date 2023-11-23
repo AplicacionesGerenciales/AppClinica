@@ -9,7 +9,7 @@
 <div class="card shadow">
     <div class="row align-items-centery">
         <div class="col">
-            <h3 class="color-text mt-3 ml-3 text-center">Clasificaciones de enfermedades</h3>
+            <h3 class="color-text mt-3 ml-3">Clasificaciones de enfermedades</h3>
         </div>
         <div class="col text-right">
             @can('crear-grupo-enfermedad')
@@ -51,7 +51,7 @@
                         <div class="modal fade" id="UpdateModal{{$enfermedadesClasifi->id}}" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="UpdateModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
-                                    <div class="modal-header">Editar categoría de enfermedad
+                                    <div class="modal-header">Editar grupo de enfermedad
                                         <button type="button" class="btn-close btn-close-white" data-dismiss="modal" aria-label="Close">
                                         </button>
                                     </div>
@@ -120,7 +120,7 @@
 <div class="modal fade" id="CreateModal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="CreateModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header">Crear categoría
+            <div class="modal-header">Crear grupo de enfermedad
                 <button type="button" class="btn-close btn-close-white" data-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -197,6 +197,6 @@
     @include('includes.alerts.create')  
 @endif
 @if (session('mensaje') == 'OkUpdate')
-    @include('includes.alerts.edit')  
+    @include('includes.alerts.edit')
 @endif
 @endsection

@@ -1,19 +1,13 @@
 @extends('layouts.panel')
 
-@section('template_title')
-    Disease
-@endsection
-
 @section('content')
-
 <div class="card shadow">
     <div class="row align-items-centery">
         <div class="col">
-            <h3 class="color-text mt-3 ml-3 text-center">Enfermedades</h3>
+            <h3 class="color-text mt-3 ml-3">Enfermedades</h3>
         </div>
         <div class="col text-right">
             @can('crear-enfermedad')
-
             <a class="text-white mr-3 mt-3 btn btn-primary" data-toggle="modal" data-target="#CreateModal" data-modal-origin="create">Nuevo
                 <i class="mr-2 fa-sharp fa-solid fa-plus"></i>
             </a>
@@ -29,7 +23,6 @@
                             <p>{{ $message }}</p>
                         </div>
                     @endif
- 
                     <div class="card-body">
                         <div class="table-responsive">
                         <table id="datatable" class="table is-striped" style="width:100%">
@@ -46,12 +39,12 @@
                 <tr>
                     <td>{{$enfermedades->id}}</td>
                     <td>{{$enfermedades->name}}</td>
-                    <td>{{$enfermedades->disease_group_id}}</td>
+                    <td>{{$enfermedades->diseaseGroup->disease_group_name}}</td>
                     <td>
                         <div class="modal fade" id="UpdateModal{{$enfermedades->id}}" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="UpdateModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
-                                    <div class="modal-header">Editar categoría de enfermedad
+                                    <div class="modal-header">Editar enfermedad
                                         <button type="button" class="btn-close btn-close-white" data-dismiss="modal" aria-label="Close">
                                         </button>
                                     </div>
@@ -73,7 +66,7 @@
                                             <select name="disease_group_id" class="form-control input-redondeado" required>
                                             <option selected disabled value="">Seleccionar</option>
                                                 @foreach($diseasesGroup as $categoria)
-                                                    <option value="{{$categoria->id}}" >
+                                                    <option value="{{$categoria->id}}" {{$categoria->id == $enfermedades->disease_group_id ? 'selected' : ''}}>
                                                         {{$categoria->disease_group_name}}</option>
                                                 @endforeach
                                             </select>
@@ -126,7 +119,7 @@
 <div class="modal fade" id="CreateModal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="CreateModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header">Crear categoría
+            <div class="modal-header">Crear enfermedad
                 <button type="button" class="btn-close btn-close-white" data-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">

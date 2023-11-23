@@ -26,37 +26,30 @@ class PatientController extends Controller
         $this->middleware('permission:editar-paciente', ['only' => ['edit','update']]);
         $this->middleware('permission:borrar-paciente', ['only' => ['destroy']]);
     }
-
     public function index()
     {
         $patients = Patient::paginate();
         return view('patient.index', compact('patients'))->with('i', (request()->input('page', 1) - 1) * $patients->perPage());
     }
-
     //cosos que modifique
     public function create()
     {
         $postNotifications = auth()->user()->unreadNotifications;
         $user = \App\Models\User::find(1);
-        
-    // Pasa la instancia del modelo a la vista "create" para mostrar el formulario
-    return view('patient.create', compact('postNotifications'));
+        // Pasa la instancia del modelo a la vista "create" para mostrar el formulario
+        return view('patient.create', compact('postNotifications'));
     }
-
     public function show($id)
     {
         $patient = Patient::findOrFail($id);
-
         return view('patient.show', compact('patient'));
     }
     public function edit($id)
     {
         $patient = Patient::findOrFail($id);
-
         return view('patient.edit', compact('patient'));
     }
     //cosos que modifique
-
     public function store(Request $request)
     {
         try{
@@ -89,7 +82,6 @@ class PatientController extends Controller
         Patient::find($id)->delete();
         return redirect()->route('patients.index')->with('mensaje', 'OkDelete');
     }
-
     public function markNotification(Request $request)
     {
         auth()->user()->unreadNotifications
@@ -97,7 +89,6 @@ class PatientController extends Controller
         {
             return $query->where('id', $request->input('id'));  
         })->marKAsRead();
-
         return response()->noContent();
     }
 
@@ -109,23 +100,24 @@ class PatientController extends Controller
     public function importExcel(){
         return Excel::download(new PatientsExport, 'patient.xlsx');
     }
-
     public function profile()
     {
         $id = Auth::id();
-        $idusers = user::where('id', $id)->pluck('id')->first();
+        $idusers = User::where('id', $id)->pluck('id')->first();
         $idpatient = Patient::where('user_id', $idusers)->pluck('id')->first();
+        $iddoctor = Doctor::where('user_id', $idusers)->pluck('id')->first();
 
-        if($idpatient != null){
+        if($idpatient !== null){
             $patients = Patient::find($idpatient);
             return view('patient.create', compact('patients'));
         }
+        if($iddoctor !== null){
+            $doctors = Doctor::find($iddoctor);
+            return view('doctor.create', compact('doctors'));
+        }
         else{
-            $iddoctor = Doctor::where('user_id', $idusers)->pluck('id')->first();
-            if($iddoctor != null){
-                $doctors = Doctor::find($iddoctor);
-                return view('doctor.create', compact('doctors'));
-            }
+            $admin = User::find($id);
+            return view('admin.create', compact('admin'));
         }
     }
     public function updatepassword(Request $password)

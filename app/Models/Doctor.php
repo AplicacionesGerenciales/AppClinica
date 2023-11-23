@@ -30,22 +30,16 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Doctor extends Model
 {
-    
-    public static function rules($id = null)
-    {
-        $rules = [
-            'name' => 'required',
-            'lastname' => 'required',
-            'phone' => 'required',
-            'identity_card' => 'required|unique:doctors,identity_card,' . $id,
-            'gender' => 'required',
-            'inss' => 'required|unique:doctors,inss,' . $id,
-            'specialty_id' => 'required',
-            'user_id' => 'required|exists:users,id|unique:doctors,user_id,' .$id,
-        ];
-        return $rules;
-    }
-
+    static $rules = [
+        'name' => 'required',
+        'lastname' => 'required',
+        'phone' => 'required',
+        'identity_card' => 'required',
+        'gender' => 'required',
+        'inss' => 'required',
+        'specialty_id' => 'required',
+        'user_id' => 'required',
+    ];
     static $messages = [
         'name.required' => 'Nombre es requerido',
         'name.min' => 'Mínimo 3 caracteres',
@@ -65,12 +59,16 @@ class Doctor extends Model
         'user_id.required' => 'id usuario es requerido',
         'user_id.unique' => 'Ya existe un doctor con ese ID de usuario.', 
         'user_id.exists' => 'El ID del usuario no existe en la base de datos.', 
-
-
     ];
-    
     protected $perPage = 20;
-
     protected $fillable = ['name','lastname','phone','identity_card','gender','inss','specialty_id','user_id'];
 
+    public function specialty()
+    {
+        return $this->hasOne('App\Models\Specialty', 'id', 'specialty_id');
+    }
+    public function user()
+    {
+        return $this->hasOne('App\Models\User', 'id', 'user_id');
+    }
 }

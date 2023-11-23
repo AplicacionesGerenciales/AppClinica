@@ -27,10 +27,8 @@ class Schedule extends Model
     'start_time' => 'required',
     'departure_time' => 'required',
     'shift' => 'required',
-    'doctor_id' => 'required|exists:doctors,id|unique:schedules,doctor_id',
+    'doctor_id' => 'required',
 ];
-
-
 
 static $messages = [
   'day.required' => 'Dìa es requerido',
@@ -40,13 +38,9 @@ static $messages = [
   'shift.required' => 'Cambio es requerido',
   'shift.min' => 'Mínimo 3 caracteres',
   'doctor_id.required' => 'Id Doctor es requerido',
-  'doctor_id.exists' => 'El ID del doctor no existe en la base de datos.',
-  'doctor_id.unique' => 'Ya existe horario en la base de datos para ese  ID de doctor',
-
 ];
 
     protected $perPage = 20;
-    
     protected $fillable = ['day','start_time','departure_time','shift','doctor_id'];    
 }
 

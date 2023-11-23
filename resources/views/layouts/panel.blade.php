@@ -78,7 +78,7 @@
                             <span class="d-none d-lg-inline-flex"> </span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
-                            <a class="dropdown-item" href="{{route('Perfil')}}">
+                            <a class="dropdown-item" href="{{route('profile')}}">
                                 <i class="fa-solid fa-user text-info"></i>
                                 Mi perfil
                             </a>

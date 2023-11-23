@@ -41,16 +41,16 @@ class MedicalConsultationController extends Controller
         request()->validate(MedicalConsultation::$rules, MedicalConsultation::$messages);
 
         $consultation = MedicalConsultation::create($request->all());
-        if($idexamination !== 2){
+        if($idexamination !== "Ninguno"){
             $idconsultation = $consultation->id;
             $array = [
                 "result" => $result,
                 "type_examination_id" => $idexamination,
                 "medical_consultation_id" => $idconsultation
             ];
+            Examination::create($array);
         }
-        Examination::create($array);
-        return redirect()->route('medical-consultations.index')->with('mensaje', 'OkCreate.');
+        return redirect()->route('medical-consultations.index')->with('mensaje', 'OkCreate');
     }
     public function update(Request $request, $id)
     {

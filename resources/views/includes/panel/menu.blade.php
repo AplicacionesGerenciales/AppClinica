@@ -118,7 +118,7 @@
                             @csrf
                         </form>
                     </li>
-                    <li class="nav-item"> <a class="nav-link" href="{{ url('Perfil') }}">Mi perfil</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ route('profile') }}">Mi perfil</a></li>
                 </ul>
             </div>
         </li>

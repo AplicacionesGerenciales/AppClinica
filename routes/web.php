@@ -50,7 +50,7 @@ Route::resource('schedules', \App\Http\Controllers\ScheduleController::class);
 Route::resource('specialties', \App\Http\Controllers\SpecialtyController::class);
 Route::resource('status-appointments', \App\Http\Controllers\StatusAppointmentController::class);
 Route::resource('type-examinations', \App\Http\Controllers\TypeExaminationController::class);
-Route::get('/profile', [App\Http\Controllers\PatientController::class, 'profile'])->name('Perfil');
+Route::get('/profile', [App\Http\Controllers\PatientController::class, 'profile'])->name('profile');
 Route::post('/updatepassword', [App\Http\Controllers\PatientController::class, 'updatepassword'])->name('ActualizarContraseña');
 // Route::get('/profiledoctor', [App\Http\Controllers\DoctorController::class, 'profiledoctor'])->name('Perfil');
 // Route::get('/NewPassword', [UserSettingsController::class,'NewPassword'])->name('Perfil')->middleware('auth');

@@ -10,10 +10,9 @@
                         <span class="card-title">{{ __('Perfil') }}</span>
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="{{ route('#') }}"  role="form" enctype="multipart/form-data">
+                        <form method="POST" action=""  role="form" enctype="multipart/form-data">
                             @csrf
                             @include('patient.form')
-
                         </form>
                     </div>
                 </div>

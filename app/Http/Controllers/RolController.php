@@ -28,7 +28,7 @@ class RolController extends Controller
      */
     public function index()
     {
-        $roles = Role::paginate(5);
+        $roles = Role::all();
         return view('roles.index', compact('roles'));
 
     }
@@ -60,7 +60,7 @@ class RolController extends Controller
         $role = Role::create(['name' => $request->input('name')]);
         $role->syncPermissions($request->input('permission'));
     
-        return redirect()->route('roles.index'); 
+        return redirect()->route('roles.index')->with('mensaje', 'OkCreate'); 
     }
 
     /**

@@ -12,7 +12,7 @@
                     <div class="card-body">
                         <form method="POST" action=""  role="form" enctype="multipart/form-data">
                             @csrf
-                            @include('doctor.form')
+                            @include('admin.form')
                         </form>
                     </div>
                 </div>

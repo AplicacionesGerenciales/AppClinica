@@ -28,7 +28,7 @@ class MedicineController extends Controller
     {
         request()->validate(Medicine::$rules, Medicine::$messages);
         Medicine::create($request->all());
-        return redirect()->route('medicines.index')->with('mensaje', 'OkCreate.');
+        return redirect()->route('medicines.index')->with('mensaje', 'OkCreate');
     }
     public function update(Request $request, $id)
     {

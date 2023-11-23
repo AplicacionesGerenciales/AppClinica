@@ -44,6 +44,6 @@ class ScheduleController extends Controller
     public function destroy($id)
     {
         Schedule::find($id)->delete();
-        return redirect()->route('schedules.index')->with('success', 'OkDelete');
+        return redirect()->route('schedules.index')->with('mensaje', 'OkDelete');
     }
 }
